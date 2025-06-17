@@ -1,0 +1,394 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|d:\\fpt_7\\exe101\\exe\\smartcampusexplorer\\smartcampusexplorer\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|solutionrelative:smartcampusexplorer\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|d:\\fpt_7\\exe101\\exe\\smartcampusexplorer\\smartcampusexplorer\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|solutionrelative:smartcampusexplorer\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|d:\\fpt_7\\exe101\\exe\\smartcampusexplorer\\smartcampusexplorer\\views\\users\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|solutionrelative:smartcampusexplorer\\views\\users\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|d:\\fpt_7\\exe101\\exe\\smartcampusexplorer\\smartcampusexplorer\\models\\viewmodels\\auth\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|solutionrelative:smartcampusexplorer\\models\\viewmodels\\auth\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|d:\\fpt_7\\exe101\\exe\\smartcampusexplorer\\smartcampusexplorer\\controllers\\analyticscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|solutionrelative:smartcampusexplorer\\controllers\\analyticscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|d:\\fpt_7\\exe101\\exe\\smartcampusexplorer\\smartcampusexplorer\\controllers\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|solutionrelative:smartcampusexplorer\\controllers\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|d:\\fpt_7\\exe101\\exe\\smartcampusexplorer\\smartcampusexplorer\\controllers\\locationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|solutionrelative:smartcampusexplorer\\controllers\\locationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|d:\\fpt_7\\exe101\\exe\\smartcampusexplorer\\smartcampusexplorer\\models\\viewmodels\\analytics\\analyticsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|solutionrelative:smartcampusexplorer\\models\\viewmodels\\analytics\\analyticsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|d:\\fpt_7\\exe101\\exe\\smartcampusexplorer\\smartcampusexplorer\\models\\viewmodels\\chat\\chatrequestviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|solutionrelative:smartcampusexplorer\\models\\viewmodels\\chat\\chatrequestviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|d:\\fpt_7\\exe101\\exe\\smartcampusexplorer\\smartcampusexplorer\\models\\viewmodels\\auth\\externalloginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|solutionrelative:smartcampusexplorer\\models\\viewmodels\\auth\\externalloginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|d:\\fpt_7\\exe101\\exe\\smartcampusexplorer\\smartcampusexplorer\\models\\viewmodels\\user\\userprofileviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|solutionrelative:smartcampusexplorer\\models\\viewmodels\\user\\userprofileviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|d:\\fpt_7\\exe101\\exe\\smartcampusexplorer\\smartcampusexplorer\\models\\viewmodels\\auth\\resetpasswordviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|solutionrelative:smartcampusexplorer\\models\\viewmodels\\auth\\resetpasswordviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|d:\\fpt_7\\exe101\\exe\\smartcampusexplorer\\smartcampusexplorer\\models\\viewmodels\\loaction\\locationeditviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|solutionrelative:smartcampusexplorer\\models\\viewmodels\\loaction\\locationeditviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|d:\\fpt_7\\exe101\\exe\\smartcampusexplorer\\smartcampusexplorer\\models\\viewmodels\\loaction\\locationdetailsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|solutionrelative:smartcampusexplorer\\models\\viewmodels\\loaction\\locationdetailsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|d:\\fpt_7\\exe101\\exe\\smartcampusexplorer\\smartcampusexplorer\\models\\viewmodels\\loaction\\locationcreateviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|solutionrelative:smartcampusexplorer\\models\\viewmodels\\loaction\\locationcreateviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|d:\\fpt_7\\exe101\\exe\\smartcampusexplorer\\smartcampusexplorer\\models\\viewmodels\\auth\\forgotpasswordviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|solutionrelative:smartcampusexplorer\\models\\viewmodels\\auth\\forgotpasswordviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|d:\\fpt_7\\exe101\\exe\\smartcampusexplorer\\smartcampusexplorer\\models\\viewmodels\\auth\\changepasswordviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|solutionrelative:smartcampusexplorer\\models\\viewmodels\\auth\\changepasswordviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|d:\\fpt_7\\exe101\\exe\\smartcampusexplorer\\smartcampusexplorer\\models\\viewmodels\\auth\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|solutionrelative:smartcampusexplorer\\models\\viewmodels\\auth\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|d:\\fpt_7\\exe101\\exe\\smartcampusexplorer\\smartcampusexplorer\\models\\entities\\analytic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|solutionrelative:smartcampusexplorer\\models\\entities\\analytic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|d:\\fpt_7\\exe101\\exe\\smartcampusexplorer\\smartcampusexplorer\\models\\entities\\adminlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|solutionrelative:smartcampusexplorer\\models\\entities\\adminlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|d:\\fpt_7\\exe101\\exe\\smartcampusexplorer\\smartcampusexplorer\\smartcampusexplorer.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|solutionrelative:smartcampusexplorer\\smartcampusexplorer.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|d:\\fpt_7\\exe101\\exe\\smartcampusexplorer\\smartcampusexplorer\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|solutionrelative:smartcampusexplorer\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Views\\Users\\Login.cshtml",
+              "RelativeDocumentMoniker": "SmartCampusExplorer\\Views\\Users\\Login.cshtml",
+              "ToolTip": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Views\\Users\\Login.cshtml",
+              "RelativeToolTip": "SmartCampusExplorer\\Views\\Users\\Login.cshtml",
+              "ViewState": "AgIAACIAAAAAAAAAAAAcwC4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-17T17:16:45.788Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AnalyticsController.cs",
+              "DocumentMoniker": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Controllers\\AnalyticsController.cs",
+              "RelativeDocumentMoniker": "SmartCampusExplorer\\Controllers\\AnalyticsController.cs",
+              "ToolTip": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Controllers\\AnalyticsController.cs",
+              "RelativeToolTip": "SmartCampusExplorer\\Controllers\\AnalyticsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T17:13:05.016Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ChatController.cs",
+              "DocumentMoniker": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Controllers\\ChatController.cs",
+              "RelativeDocumentMoniker": "SmartCampusExplorer\\Controllers\\ChatController.cs",
+              "ToolTip": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Controllers\\ChatController.cs",
+              "RelativeToolTip": "SmartCampusExplorer\\Controllers\\ChatController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T17:12:48.242Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "SmartCampusExplorer\\Controllers\\UsersController.cs",
+              "ToolTip": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "SmartCampusExplorer\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAgwBAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T17:12:09.636Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LoginViewModel.cs",
+              "DocumentMoniker": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Models\\ViewModels\\Auth\\LoginViewModel.cs",
+              "RelativeDocumentMoniker": "SmartCampusExplorer\\Models\\ViewModels\\Auth\\LoginViewModel.cs",
+              "ToolTip": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Models\\ViewModels\\Auth\\LoginViewModel.cs",
+              "RelativeToolTip": "SmartCampusExplorer\\Models\\ViewModels\\Auth\\LoginViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T17:03:07.291Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Program.cs",
+              "RelativeDocumentMoniker": "SmartCampusExplorer\\Program.cs",
+              "ToolTip": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Program.cs",
+              "RelativeToolTip": "SmartCampusExplorer\\Program.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAAADgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T16:49:16.034Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LocationsController.cs",
+              "DocumentMoniker": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Controllers\\LocationsController.cs",
+              "RelativeDocumentMoniker": "SmartCampusExplorer\\Controllers\\LocationsController.cs",
+              "ToolTip": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Controllers\\LocationsController.cs",
+              "RelativeToolTip": "SmartCampusExplorer\\Controllers\\LocationsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T17:12:32.977Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ExternalLoginViewModel.cs",
+              "DocumentMoniker": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Models\\ViewModels\\Auth\\ExternalLoginViewModel.cs",
+              "RelativeDocumentMoniker": "SmartCampusExplorer\\Models\\ViewModels\\Auth\\ExternalLoginViewModel.cs",
+              "ToolTip": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Models\\ViewModels\\Auth\\ExternalLoginViewModel.cs",
+              "RelativeToolTip": "SmartCampusExplorer\\Models\\ViewModels\\Auth\\ExternalLoginViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T17:07:38.758Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ChatRequestViewModel.cs",
+              "DocumentMoniker": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Models\\ViewModels\\Chat\\ChatRequestViewModel.cs",
+              "RelativeDocumentMoniker": "SmartCampusExplorer\\Models\\ViewModels\\Chat\\ChatRequestViewModel.cs",
+              "ToolTip": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Models\\ViewModels\\Chat\\ChatRequestViewModel.cs",
+              "RelativeToolTip": "SmartCampusExplorer\\Models\\ViewModels\\Chat\\ChatRequestViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T17:04:46.06Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "UserProfileViewModel.cs",
+              "DocumentMoniker": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Models\\ViewModels\\User\\UserProfileViewModel.cs",
+              "RelativeDocumentMoniker": "SmartCampusExplorer\\Models\\ViewModels\\User\\UserProfileViewModel.cs",
+              "ToolTip": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Models\\ViewModels\\User\\UserProfileViewModel.cs",
+              "RelativeToolTip": "SmartCampusExplorer\\Models\\ViewModels\\User\\UserProfileViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T17:03:56.153Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AnalyticsViewModel.cs",
+              "DocumentMoniker": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Models\\ViewModels\\Analytics\\AnalyticsViewModel.cs",
+              "RelativeDocumentMoniker": "SmartCampusExplorer\\Models\\ViewModels\\Analytics\\AnalyticsViewModel.cs",
+              "ToolTip": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Models\\ViewModels\\Analytics\\AnalyticsViewModel.cs",
+              "RelativeToolTip": "SmartCampusExplorer\\Models\\ViewModels\\Analytics\\AnalyticsViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T17:04:37.077Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ResetPasswordViewModel.cs",
+              "DocumentMoniker": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Models\\ViewModels\\Auth\\ResetPasswordViewModel.cs",
+              "RelativeDocumentMoniker": "SmartCampusExplorer\\Models\\ViewModels\\Auth\\ResetPasswordViewModel.cs",
+              "ToolTip": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Models\\ViewModels\\Auth\\ResetPasswordViewModel.cs",
+              "RelativeToolTip": "SmartCampusExplorer\\Models\\ViewModels\\Auth\\ResetPasswordViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T17:03:38.583Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "LocationEditViewModel.cs",
+              "DocumentMoniker": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Models\\ViewModels\\Loaction\\LocationEditViewModel.cs",
+              "RelativeDocumentMoniker": "SmartCampusExplorer\\Models\\ViewModels\\Loaction\\LocationEditViewModel.cs",
+              "ToolTip": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Models\\ViewModels\\Loaction\\LocationEditViewModel.cs",
+              "RelativeToolTip": "SmartCampusExplorer\\Models\\ViewModels\\Loaction\\LocationEditViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T17:04:15.672Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "LocationDetailsViewModel.cs",
+              "DocumentMoniker": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Models\\ViewModels\\Loaction\\LocationDetailsViewModel.cs",
+              "RelativeDocumentMoniker": "SmartCampusExplorer\\Models\\ViewModels\\Loaction\\LocationDetailsViewModel.cs",
+              "ToolTip": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Models\\ViewModels\\Loaction\\LocationDetailsViewModel.cs",
+              "RelativeToolTip": "SmartCampusExplorer\\Models\\ViewModels\\Loaction\\LocationDetailsViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T17:04:28.712Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "LocationCreateViewModel.cs",
+              "DocumentMoniker": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Models\\ViewModels\\Loaction\\LocationCreateViewModel.cs",
+              "RelativeDocumentMoniker": "SmartCampusExplorer\\Models\\ViewModels\\Loaction\\LocationCreateViewModel.cs",
+              "ToolTip": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Models\\ViewModels\\Loaction\\LocationCreateViewModel.cs",
+              "RelativeToolTip": "SmartCampusExplorer\\Models\\ViewModels\\Loaction\\LocationCreateViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T17:04:06.436Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ForgotPasswordViewModel.cs",
+              "DocumentMoniker": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Models\\ViewModels\\Auth\\ForgotPasswordViewModel.cs",
+              "RelativeDocumentMoniker": "SmartCampusExplorer\\Models\\ViewModels\\Auth\\ForgotPasswordViewModel.cs",
+              "ToolTip": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Models\\ViewModels\\Auth\\ForgotPasswordViewModel.cs",
+              "RelativeToolTip": "SmartCampusExplorer\\Models\\ViewModels\\Auth\\ForgotPasswordViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T17:03:28.306Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ChangePasswordViewModel.cs",
+              "DocumentMoniker": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Models\\ViewModels\\Auth\\ChangePasswordViewModel.cs",
+              "RelativeDocumentMoniker": "SmartCampusExplorer\\Models\\ViewModels\\Auth\\ChangePasswordViewModel.cs",
+              "ToolTip": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Models\\ViewModels\\Auth\\ChangePasswordViewModel.cs",
+              "RelativeToolTip": "SmartCampusExplorer\\Models\\ViewModels\\Auth\\ChangePasswordViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T17:03:47.421Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "RegisterViewModel.cs",
+              "DocumentMoniker": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Models\\ViewModels\\Auth\\RegisterViewModel.cs",
+              "RelativeDocumentMoniker": "SmartCampusExplorer\\Models\\ViewModels\\Auth\\RegisterViewModel.cs",
+              "ToolTip": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Models\\ViewModels\\Auth\\RegisterViewModel.cs",
+              "RelativeToolTip": "SmartCampusExplorer\\Models\\ViewModels\\Auth\\RegisterViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T17:03:17.318Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Analytic.cs",
+              "DocumentMoniker": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Models\\Entities\\Analytic.cs",
+              "RelativeDocumentMoniker": "SmartCampusExplorer\\Models\\Entities\\Analytic.cs",
+              "ToolTip": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Models\\Entities\\Analytic.cs",
+              "RelativeToolTip": "SmartCampusExplorer\\Models\\Entities\\Analytic.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T17:00:31.181Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "AdminLog.cs",
+              "DocumentMoniker": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Models\\Entities\\AdminLog.cs",
+              "RelativeDocumentMoniker": "SmartCampusExplorer\\Models\\Entities\\AdminLog.cs",
+              "ToolTip": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Models\\Entities\\AdminLog.cs",
+              "RelativeToolTip": "SmartCampusExplorer\\Models\\Entities\\AdminLog.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T16:58:16.826Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "SmartCampusExplorer",
+              "DocumentMoniker": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\SmartCampusExplorer.csproj",
+              "RelativeDocumentMoniker": "SmartCampusExplorer\\SmartCampusExplorer.csproj",
+              "ToolTip": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\SmartCampusExplorer.csproj",
+              "RelativeToolTip": "SmartCampusExplorer\\SmartCampusExplorer.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-06-17T16:49:59.161Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\appsettings.json",
+              "RelativeDocumentMoniker": "SmartCampusExplorer\\appsettings.json",
+              "ToolTip": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\appsettings.json",
+              "RelativeToolTip": "SmartCampusExplorer\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-17T16:48:28.607Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
