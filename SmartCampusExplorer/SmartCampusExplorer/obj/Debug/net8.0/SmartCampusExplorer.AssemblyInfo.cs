@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SmartCampusExplorer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cc5846bd2f7b948a94165b3e5e88d96e0cb53914")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c3760fa3e3f3182889c35157a44bb43d89548c6b")]
 [assembly: System.Reflection.AssemblyProductAttribute("SmartCampusExplorer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SmartCampusExplorer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

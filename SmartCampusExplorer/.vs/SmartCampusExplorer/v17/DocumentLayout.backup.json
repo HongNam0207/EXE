@@ -1,12 +1,122 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|d:\\fpt_7\\exe101\\exe\\smartcampusexplorer\\smartcampusexplorer\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|solutionrelative:smartcampusexplorer\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|d:\\fpt_7\\exe101\\exe\\smartcampusexplorer\\smartcampusexplorer\\views\\users\\forgotpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|solutionrelative:smartcampusexplorer\\views\\users\\forgotpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|d:\\fpt_7\\exe101\\exe\\smartcampusexplorer\\smartcampusexplorer\\models\\viewmodels\\auth\\forgotpasswordviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|solutionrelative:smartcampusexplorer\\models\\viewmodels\\auth\\forgotpasswordviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|d:\\fpt_7\\exe101\\exe\\smartcampusexplorer\\smartcampusexplorer\\views\\users\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|solutionrelative:smartcampusexplorer\\views\\users\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|d:\\fpt_7\\exe101\\exe\\smartcampusexplorer\\smartcampusexplorer\\models\\viewmodels\\auth\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|solutionrelative:smartcampusexplorer\\models\\viewmodels\\auth\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|d:\\fpt_7\\exe101\\exe\\smartcampusexplorer\\smartcampusexplorer\\views\\users\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{62148D04-B356-4C3C-B744-48F38CC3824C}|SmartCampusExplorer\\SmartCampusExplorer.csproj|solutionrelative:smartcampusexplorer\\views\\users\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ForgotPassword.cshtml",
+              "DocumentMoniker": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Views\\Users\\ForgotPassword.cshtml",
+              "RelativeDocumentMoniker": "SmartCampusExplorer\\Views\\Users\\ForgotPassword.cshtml",
+              "ToolTip": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Views\\Users\\ForgotPassword.cshtml",
+              "RelativeToolTip": "SmartCampusExplorer\\Views\\Users\\ForgotPassword.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-17T17:27:44.908Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ForgotPasswordViewModel.cs",
+              "DocumentMoniker": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Models\\ViewModels\\Auth\\ForgotPasswordViewModel.cs",
+              "RelativeDocumentMoniker": "SmartCampusExplorer\\Models\\ViewModels\\Auth\\ForgotPasswordViewModel.cs",
+              "ToolTip": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Models\\ViewModels\\Auth\\ForgotPasswordViewModel.cs",
+              "RelativeToolTip": "SmartCampusExplorer\\Models\\ViewModels\\Auth\\ForgotPasswordViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T17:27:18.561Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Views\\Users\\Register.cshtml",
+              "RelativeDocumentMoniker": "SmartCampusExplorer\\Views\\Users\\Register.cshtml",
+              "ToolTip": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Views\\Users\\Register.cshtml",
+              "RelativeToolTip": "SmartCampusExplorer\\Views\\Users\\Register.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-17T17:26:00.105Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RegisterViewModel.cs",
+              "DocumentMoniker": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Models\\ViewModels\\Auth\\RegisterViewModel.cs",
+              "RelativeDocumentMoniker": "SmartCampusExplorer\\Models\\ViewModels\\Auth\\RegisterViewModel.cs",
+              "ToolTip": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Models\\ViewModels\\Auth\\RegisterViewModel.cs",
+              "RelativeToolTip": "SmartCampusExplorer\\Models\\ViewModels\\Auth\\RegisterViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T17:25:27.431Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "SmartCampusExplorer\\Controllers\\UsersController.cs",
+              "ToolTip": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "SmartCampusExplorer\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T17:22:58.288Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Views\\Users\\Login.cshtml",
+              "RelativeDocumentMoniker": "SmartCampusExplorer\\Views\\Users\\Login.cshtml",
+              "ToolTip": "D:\\FPT_7\\EXE101\\EXE\\SmartCampusExplorer\\SmartCampusExplorer\\Views\\Users\\Login.cshtml",
+              "RelativeToolTip": "SmartCampusExplorer\\Views\\Users\\Login.cshtml",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAABIAAABRAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-17T17:22:55.539Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -153,3 +153,4 @@ D:\FPT_7\EXE101\EXE\SmartCampusExplorer\SmartCampusExplorer\obj\Debug\net8.0\ref
 D:\FPT_7\EXE101\EXE\SmartCampusExplorer\SmartCampusExplorer\obj\Debug\net8.0\SmartCampusExplorer.pdb
 D:\FPT_7\EXE101\EXE\SmartCampusExplorer\SmartCampusExplorer\obj\Debug\net8.0\SmartCampusExplorer.genruntimeconfig.cache
 D:\FPT_7\EXE101\EXE\SmartCampusExplorer\SmartCampusExplorer\obj\Debug\net8.0\ref\SmartCampusExplorer.dll
+D:\FPT_7\EXE101\EXE\SmartCampusExplorer\SmartCampusExplorer\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
