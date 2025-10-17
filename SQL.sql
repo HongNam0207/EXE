@@ -114,3 +114,19 @@ VALUES
 (N'Căng tin 2', 'food', N'Khu ăn uống phía Dom khu C', '21.013148,105.522603'),
 (N'Sân tập lái ô tô Hòa Lạc', 'other', N'Khu tập lái xe', '21.011425,105.524400'),
 (N'Điểm đỗ xe buýt Hòa Lạc', 'other', N'Điểm đỗ xe buýt chính khuôn viên', '21.012685,105.527702');
+
+ALTER TABLE locations DROP CONSTRAINT CK__locations__type__4316F928;
+
+ALTER TABLE locations
+ADD CONSTRAINT CK_locations_type
+CHECK (type IN ('building', 'service', 'nature', 'food', 'supermarket', 'other'));
+
+SELECT name
+FROM sys.check_constraints
+WHERE parent_object_id = OBJECT_ID('analytics');
+
+ALTER TABLE analytics DROP CONSTRAINT CK__analytics__actio__628FA481;
+
+ALTER TABLE analytics
+ADD CONSTRAINT CK_analytics_action
+CHECK (action IN ('view', 'navigate', 'search', 'view_location'));
