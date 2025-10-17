@@ -28,38 +28,82 @@
     <main>
 
         <!-- NAVBAR -->
-        <nav class="navbar navbar-expand-lg">
-            <div class="container">
-                <a class="navbar-brand" asp-page="/Customer/Home">
-                    <i class="bi-back"></i>
-                    <span>AILENS</span>
-                </a>
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" asp-page="/Customer/Home">
+            <i class="bi-back"></i>
+            <span>AILENS</span>
+        </a>
 
-                <div class="d-lg-none ms-auto me-4">
-                    <a asp-page="/Common/Login" class="navbar-icon bi-person"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-                </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-lg-5 me-lg-auto">
+                <li class="nav-item"><a class="nav-link click-scroll" href="#section_1">Trang chủ</a></li>
+                <li class="nav-item"><a class="nav-link click-scroll" href="#section_2">Chủ đề</a></li>
+                <li class="nav-item"><a class="nav-link click-scroll" href="#section_3">Cách hoạt động</a></li>
+                <li class="nav-item"><a class="nav-link click-scroll" href="#section_4">Câu hỏi thường gặp</a></li>
+                <li class="nav-item"><a class="nav-link click-scroll" href="#section_5">Liên hệ</a></li>
+                <li class="nav-item"><a class="nav-link click-scroll" href="#section_6">Dịch vụ</a></li>
+            </ul>
 
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-lg-5 me-lg-auto">
-                        <li class="nav-item"><a class="nav-link click-scroll" href="#section_1">Trang chủ</a></li>
-                        <li class="nav-item"><a class="nav-link click-scroll" href="#section_2">Chủ đề</a></li>
-                        <li class="nav-item"><a class="nav-link click-scroll" href="#section_3">Cách hoạt động</a></li>
-                        <li class="nav-item"><a class="nav-link click-scroll" href="#section_4">Câu hỏi thường gặp</a></li>
-                        <li class="nav-item"><a class="nav-link click-scroll" href="#section_5">Liên hệ</a></li>
-                        <li class="nav-item"><a class="nav-link click-scroll" href="#section_6">Dịch vụ</a></li>
-                    </ul>
-                    <div class="d-none d-lg-block">
-                        <a asp-page="/Common/Login" class="navbar-icon bi-person"></a>
+            <!-- Desktop view -->
+            <div class="d-none d-lg-block">
+                @if (User.Identity != null && User.Identity.IsAuthenticated)
+                {
+                    <!-- Nếu đã login -->
+                    <div class="dropdown">
+                        <a class="btn btn-outline-secondary dropdown-toggle" href="#" id="userDropdownLg" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Chào @User.Identity.Name
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdownLg">
+                            <li><a class="dropdown-item" asp-page="/Customer/Profile">My Profile</a></li>
+                            <li>
+                                <form method="post" asp-page="/Common/Logout">
+                                    <button type="submit" class="dropdown-item">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
                     </div>
-                </div>
+                }
+                else
+                {
+                    <!-- Nếu chưa login -->
+                    <a asp-page="/Common/Login" class="btn btn-outline-primary">Đăng nhập</a>
+                }
             </div>
-        </nav>
+
+            <!-- Mobile view -->
+            <div class="d-lg-none ms-auto me-4">
+                @if (User.Identity != null && User.Identity.IsAuthenticated)
+                {
+                    <div class="dropdown">
+                        <a class="navbar-icon bi-person dropdown-toggle" href="#" id="userDropdownSm" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Chào @User.Identity.Name
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdownSm">
+                            <li><a class="dropdown-item" asp-page="/Customer/Profile">My Profile</a></li>
+                            <li>
+                                <form method="post" asp-page="/Common/Logout">
+                                    <button type="submit" class="dropdown-item">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                }
+                else
+                {
+                    <a asp-page="/Common/Login" class="btn btn-outline-primary">Đăng nhập</a>
+                }
+            </div>
+        </div>
+    </div>
+</nav>
+
 
         <!-- HERO SECTION -->
         <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">

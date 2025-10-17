@@ -1,5 +1,5 @@
-﻿Create database AILENS
-use AILENS
+﻿-- Create database AILENS
+-- use AILENS
 -- 1. Bảng users
 CREATE TABLE users (
     id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
@@ -115,7 +115,14 @@ VALUES
 (N'Sân tập lái ô tô Hòa Lạc', 'other', N'Khu tập lái xe', '21.011425,105.524400'),
 (N'Điểm đỗ xe buýt Hòa Lạc', 'other', N'Điểm đỗ xe buýt chính khuôn viên', '21.012685,105.527702');
 
-ALTER TABLE locations DROP CONSTRAINT CK__locations__type__4316F928;
+
+SELECT 
+    name, type_desc
+FROM sys.check_constraints
+WHERE parent_object_id = OBJECT_ID('locations');
+
+
+ALTER TABLE locations DROP CONSTRAINT CK__locations__type__5629CD9C;
 
 ALTER TABLE locations
 ADD CONSTRAINT CK_locations_type
