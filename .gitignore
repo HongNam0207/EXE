@@ -41,8 +41,8 @@ TestResults/
 *.appx
 *.appxsym
 
-# Publish folders
-wwwroot/
+# Publish folders (keep wwwroot!)
+# wwwroot/ ← ❌ ĐÃ GỠ để giữ lại toàn bộ thư mục wwwroot
 **/publish/
 **/PublishProfiles/
 **/out/
