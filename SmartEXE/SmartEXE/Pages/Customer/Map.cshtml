@@ -1,0 +1,292 @@
+﻿@page
+@using System.Text.Json
+@model SmartEXE.Pages.Customer.MapModel
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Bản đồ nội khu - AILENS</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/bootstrap-icons.css" rel="stylesheet" />
+    <link href="~/css/templatemo-topic-listing.css" rel="stylesheet" asp-append-version="true" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.fullscreen@2.4.0/Control.FullScreen.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+
+    <style>
+        .highlight-loc {
+            background: #f0f8ff;
+            box-shadow: 0 0 10px rgba(0, 100, 255, 0.3);
+            transition: all .5s ease;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body, html {
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+
+        #campusMap {
+            height: 560px;
+            border-radius: 16px;
+            box-shadow: 0 12px 30px rgba(0,0,0,.12);
+            border: 1px solid rgba(255,255,255,.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-legend {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            z-index: 1000;
+            background: rgba(255,255,255,.9);
+            border-radius: 12px;
+            padding: 10px 12px;
+            box-shadow: 0 6px 16px rgba(0,0,0,.12);
+            font-size: 14px;
+            line-height: 1.2;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 6px 0;
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            box-shadow: 0 0 0 2px rgba(0,0,0,.08) inset;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" asp-page="/Customer/Home">
+                <i class="bi-back"></i>
+                <span>AILENS</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-lg-5 me-lg-auto">
+                    <li class="nav-item"><a class="nav-link" asp-page="/Customer/Home">Trang chủ</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Bản đồ</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-page="/Customer/Chatbot">Trợ lý ảo</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN -->
+    <main>
+        <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+            <div class="container text-center" data-aos="fade-up">
+                <h1 class="text-white">Bản đồ nội khu</h1>
+                <p class="text-white">Tìm kiếm địa điểm và định hướng chính xác trong khuôn viên</p>
+            </div>
+        </section>
+
+        <section class="section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="bg-white shadow rounded p-3 text-center" data-aos="fade-up">
+                            <div id="campusMap"></div>
+                            
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer section-padding">
+        <div class="container text-center text-white">
+            <p>© 2025 AILENS Campus Explorer</p>
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.fullscreen@2.4.0/Control.FullScreen.js"></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+
+            // ✅ 1. Khởi tạo hiệu ứng AOS (nếu có)
+            if (window.AOS && typeof AOS.init === 'function') {
+                AOS.init({ duration: 800, once: true });
+            }
+
+            // ✅ 2. Kiểm tra Leaflet
+            if (!window.L || typeof L.map !== 'function') {
+                console.error('❌ Leaflet chưa tải hoặc bị lỗi.');
+                return;
+            }
+
+            // ✅ 3. Tạo bản đồ cơ bản
+            const map = L.map('campusMap', {
+                fullscreenControl: true
+            }).setView([21.0135, 105.5253], 17);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(map);
+
+            // ✅ 4. Nhận dữ liệu từ Razor (Model.Locations)
+            const locations = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.Locations));
+            console.log("📍 Dữ liệu từ DB:", locations);
+
+            // ✅ 5. Danh mục và màu
+            const Category = {
+                BUILDING: 'building',
+                SERVICE: 'service',
+                NATURE: 'nature',
+                FOOD: 'food',
+                OTHER: 'other'
+            };
+
+            const catColor = {
+                [Category.BUILDING]: '#2b6cb0',   // xanh dương
+                [Category.SERVICE]:  '#38a169',   // xanh lá
+                [Category.NATURE]:   '#e53e3e',   // đỏ
+                [Category.FOOD]:     '#f6ad55',   // cam
+                [Category.OTHER]:    '#718096'    // xám
+            };
+
+            // ✅ 6. Hàm tạo icon SVG tròn
+            const makeIcon = (hex) => {
+                const svg = encodeURIComponent(`
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36">
+                        <circle cx="18" cy="18" r="9" fill="${hex}" stroke="white" stroke-width="2"/>
+                    </svg>
+                `);
+                return L.icon({
+                    iconUrl: `data:image/svg+xml;charset=UTF-8,${svg}`,
+                    iconSize: [36, 36],
+                    iconAnchor: [18, 18],
+                    popupAnchor: [0, -12]
+                });
+            };
+
+            // ✅ 7. Duyệt qua từng location từ DB
+            const bounds = [];
+
+            locations.forEach(loc => {
+                const coordsRaw = loc.Coordinates || loc.coordinates;
+                const name = loc.Name || loc.name;
+                const desc = loc.Description || loc.description;
+                const type = (loc.Type || loc.type || '').toLowerCase();
+
+                if (!coordsRaw) return;
+
+                const [lat, lng] = coordsRaw.split(',').map(Number);
+                if (isNaN(lat) || isNaN(lng)) return;
+
+                const color = catColor[type] || '#666';
+                const marker = L.marker([lat, lng], { icon: makeIcon(color) });
+
+                                                const popupHtml = `
+            <div style="min-width:200px;max-width:240px;">
+                <h6 style="margin-bottom:4px;color:#2b6cb0;font-weight:600;">${name}</h6>
+                <p style="font-size:13px;margin-bottom:6px;">${desc ?? ''}</p>
+                <a href="/Customer/LocationDetail?id=${loc.Id}"
+                   class="btn btn-sm btn-outline-primary w-100">
+                   Xem chi tiết
+                </a>
+            </div>
+        `;
+        marker.bindPopup(popupHtml, {
+            closeButton: true,
+            autoClose: true,
+        });
+
+
+
+
+                marker.bindTooltip(name, { direction: 'top', offset: [0, -12] });
+                marker.on('click', () => {
+                    map.flyTo(marker.getLatLng(), Math.max(map.getZoom(), 18), { duration: 0.5 });
+                });
+
+                marker.addTo(map); // 🚀 Không dùng cluster nữa
+                bounds.push([lat, lng]);
+            });
+
+            // ✅ 8. Zoom vừa đủ tất cả marker
+            if (bounds.length > 0) map.fitBounds(bounds, { padding: [30, 30] });
+
+            // ✅ 9. Legend (chú thích phân loại)
+            const legend = document.createElement('div');
+            legend.className = 'map-legend';
+            legend.innerHTML = `
+                <div style="font-weight:600; margin-bottom:6px;">Phân loại</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#2b6cb0;"></span> Tòa nhà</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#38a169;"></span> Dịch vụ</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#e53e3e;"></span> Cảnh quan</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#f6ad55;"></span> Quán ăn</div>
+            `;
+            const mapEl = document.getElementById('campusMap');
+            if (mapEl) {
+                mapEl.style.position = 'relative';
+                mapEl.appendChild(legend);
+            }
+        });
+
+                // ✅ Xử lý click vào tên trong popup để scroll xuống chi tiết
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('popup-link')) {
+                e.preventDefault();
+                const locId = e.target.dataset.locid;
+                const targetEl = document.getElementById(`loc-${locId}`);
+                if (targetEl) {
+                    targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    targetEl.classList.add('highlight-loc');
+
+                    // Hiệu ứng nổi bật khi scroll đến
+                    setTimeout(() => targetEl.classList.remove('highlight-loc'), 1500);
+                }
+            }
+        });
+
+    </script>
+
+
+</body>
+</html>
