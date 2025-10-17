@@ -1,4 +1,84 @@
 ﻿@page
 @model SmartEXE.Pages.Admin.LocationAdminModel
 @{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Quản lý Địa điểm";
+    ViewData["ActivePage"] = "Location";
 }
+
+<h2 class="page-title">📍 Quản lý Địa điểm</h2>
+
+<!-- FORM THÊM -->
+<div class="card mb-4">
+    <div class="card-header bg-primary text-white">➕ Thêm địa điểm mới</div>
+    <div class="card-body">
+        <form method="post" asp-page-handler="Create">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label>Tên địa điểm</label>
+                    <input asp-for="LocationInput.Name" class="form-control" required />
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label>Loại</label>
+                    <select asp-for="LocationInput.Type" class="form-select">
+                        <option value="building">Tòa nhà</option>
+                        <option value="service">Dịch vụ</option>
+                        <option value="nature">Thiên nhiên</option>
+                        <option value="food">Ăn uống</option>
+                        <option value="supermarket">Siêu thị</option>
+                        <option value="other">Khác</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label>Tọa độ</label>
+                    <input asp-for="LocationInput.Coordinates" class="form-control" />
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label>Ảnh</label>
+                    <input asp-for="LocationInput.ImageUrl" class="form-control" />
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label>Mô hình 3D (.glb)</label>
+                    <input asp-for="LocationInput.GlbModelUrl" class="form-control" />
+                </div>
+                <div class="col-md-12 mb-3">
+                    <label>Mô tả</label>
+                    <textarea asp-for="LocationInput.Description" class="form-control" rows="2"></textarea>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">Lưu địa điểm</button>
+        </form>
+    </div>
+</div>
+
+<!-- DANH SÁCH -->
+<table class="table table-hover table-bordered bg-white shadow-sm">
+    <thead class="table-dark">
+        <tr>
+            <th>Tên</th>
+            <th>Loại</th>
+            <th>Tọa độ</th>
+            <th>Mô tả</th>
+            <th>Ảnh</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var l in Model.Locations)
+        {
+            <tr>
+                <td>@l.Name</td>
+                <td>@l.Type</td>
+                <td>@l.Coordinates</td>
+                <td>@l.Description</td>
+                <td><img src="@l.ImageUrl" style="max-width:80px;max-height:80px;object-fit:cover" /></td>
+                <td>
+                    <form method="post" asp-page-handler="Delete" style="display:inline">
+                        <input type="hidden" name="id" value="@l.Id" />
+                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Xóa địa điểm này?')">Xóa</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

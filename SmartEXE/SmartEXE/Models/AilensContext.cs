@@ -27,6 +27,8 @@ public partial class AilensContext : DbContext
 
     public virtual DbSet<Map> Maps { get; set; }
 
+    public virtual DbSet<Partner> Partners { get; set; }
+
     public virtual DbSet<Topic> Topics { get; set; }
 
     public virtual DbSet<Tour> Tours { get; set; }
@@ -207,6 +209,37 @@ public partial class AilensContext : DbContext
             entity.HasOne(d => d.Location).WithMany(p => p.Maps)
                 .HasForeignKey(d => d.LocationId)
                 .HasConstraintName("FK__maps__location_i__5441852A");
+        });
+
+        modelBuilder.Entity<Partner>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__partners__3213E83FD1585785");
+
+            entity.ToTable("partners");
+
+            entity.Property(e => e.Id)
+                .HasDefaultValueSql("(newid())")
+                .HasColumnName("id");
+            entity.Property(e => e.ContactEmail)
+                .HasMaxLength(255)
+                .HasColumnName("contact_email");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime")
+                .HasColumnName("created_at");
+            entity.Property(e => e.Description).HasColumnName("description");
+            entity.Property(e => e.Name)
+                .HasMaxLength(255)
+                .HasColumnName("name");
+            entity.Property(e => e.Phone)
+                .HasMaxLength(50)
+                .HasColumnName("phone");
+            entity.Property(e => e.Type)
+                .HasMaxLength(100)
+                .HasColumnName("type");
+            entity.Property(e => e.Website)
+                .HasMaxLength(255)
+                .HasColumnName("website");
         });
 
         modelBuilder.Entity<Topic>(entity =>

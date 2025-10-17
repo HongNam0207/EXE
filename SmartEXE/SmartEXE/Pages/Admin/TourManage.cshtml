@@ -1,4 +1,65 @@
 ﻿@page
 @model SmartEXE.Pages.Admin.TourManageModel
 @{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Quản lý Tours";
+    ViewData["ActivePage"] = "Tour";
 }
+
+<h2 class="page-title">🗺️ Quản lý Tours</h2>
+
+<!-- FORM THÊM -->
+<div class="card mb-4">
+    <div class="card-header bg-primary text-white">➕ Thêm Tour mới</div>
+    <div class="card-body">
+        <form method="post" asp-page-handler="Create">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label>Tiêu đề Tour</label>
+                    <input asp-for="TourInput.Title" class="form-control" required />
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label>Loại Tour</label>
+                    <select asp-for="TourInput.Type" class="form-select">
+                        <option value="guide">Tour hướng dẫn</option>
+                        <option value="virtual">Tour ảo</option>
+                        <option value="custom">Tour tùy chỉnh</option>
+                    </select>
+                </div>
+                <div class="col-md-12 mb-3">
+                    <label>Danh sách địa điểm (JSON hoặc chuỗi)</label>
+                    <textarea asp-for="TourInput.LocationIds" class="form-control" rows="2" placeholder='["Tòa Beta","Tòa Delta"]'></textarea>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">Lưu Tour</button>
+        </form>
+    </div>
+</div>
+
+<!-- DANH SÁCH -->
+<table class="table table-hover table-bordered bg-white shadow-sm">
+    <thead class="table-dark">
+        <tr>
+            <th>Tiêu đề</th>
+            <th>Loại</th>
+            <th>Địa điểm</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var t in Model.Tours)
+        {
+            <tr>
+                <td>@t.Title</td>
+                <td>@t.Type</td>
+                <td><pre class="m-0">@t.LocationIds</pre></td>
+                <td>
+                    <form method="post" asp-page-handler="Delete" style="display:inline">
+                        <input type="hidden" name="id" value="@t.Id" />
+                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Xóa tour này?')">Xóa</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

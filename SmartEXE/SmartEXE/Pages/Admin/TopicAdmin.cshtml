@@ -1,4 +1,55 @@
 ﻿@page
 @model SmartEXE.Pages.Admin.TopicAdminModel
 @{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Quản lý Chủ đề";
+    ViewData["ActivePage"] = "Topic";
 }
+
+<h2 class="page-title">📚 Quản lý Chủ đề</h2>
+
+<!-- FORM THÊM -->
+<div class="card mb-4">
+    <div class="card-header bg-primary text-white">➕ Thêm chủ đề mới</div>
+    <div class="card-body">
+        <form method="post" asp-page-handler="Create">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label>Tên chủ đề</label>
+                    <input asp-for="TopicInput.Name" class="form-control" required />
+                </div>
+                <div class="col-md-12 mb-3">
+                    <label>Mô tả</label>
+                    <textarea asp-for="TopicInput.Description" class="form-control" rows="3"></textarea>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">Lưu chủ đề</button>
+        </form>
+    </div>
+</div>
+
+<!-- DANH SÁCH -->
+<table class="table table-hover table-bordered bg-white shadow-sm">
+    <thead class="table-dark">
+        <tr>
+            <th>Tên chủ đề</th>
+            <th>Mô tả</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var t in Model.Topics)
+        {
+            <tr>
+                <td>@t.Name</td>
+                <td>@t.Description</td>
+                <td>
+                    <form method="post" asp-page-handler="Delete" style="display:inline">
+                        <input type="hidden" name="id" value="@t.Id" />
+                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Xóa chủ đề này?')">Xóa</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

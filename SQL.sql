@@ -130,3 +130,68 @@ ALTER TABLE analytics DROP CONSTRAINT CK__analytics__actio__628FA481;
 ALTER TABLE analytics
 ADD CONSTRAINT CK_analytics_action
 CHECK (action IN ('view', 'navigate', 'search', 'view_location'));
+
+CREATE TABLE partners (
+    id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+    name NVARCHAR(255) NOT NULL,
+    type NVARCHAR(100) CHECK (type IN ('supplier', 'service', 'investor', 'business_partner')),
+    contact_email NVARCHAR(255),
+    phone NVARCHAR(50),
+    website NVARCHAR(255),
+    description NVARCHAR(MAX),
+    created_at DATETIME DEFAULT GETDATE()
+);
+
+INSERT INTO users (name, email, password_hash, role)
+VALUES
+(N'Nguyễn Văn A', 'a@student.fpt.edu.vn', 'hashed123', 'student'),
+(N'Lê Thị B', 'b@guest.com', 'hashed123', 'guest'),
+(N'Trần Văn C', 'c@fpt.edu.vn', 'hashed123', 'admin'),
+(N'Ngô Minh D', 'd@student.fpt.edu.vn', 'hashed123', 'student');
+
+DECLARE @uid1 UNIQUEIDENTIFIER = (SELECT TOP 1 id FROM users WHERE email='a@student.fpt.edu.vn');
+DECLARE @uid2 UNIQUEIDENTIFIER = (SELECT TOP 1 id FROM users WHERE email='b@guest.com');
+DECLARE @uid3 UNIQUEIDENTIFIER = (SELECT TOP 1 id FROM users WHERE email='c@fpt.edu.vn');
+DECLARE @uid4 UNIQUEIDENTIFIER = (SELECT TOP 1 id FROM users WHERE email='d@student.fpt.edu.vn');
+
+INSERT INTO auth_providers (user_id, provider, provider_uid, access_token)
+VALUES
+(@uid1, 'google', 'g_123', 'token_1'),
+(@uid2, 'facebook', 'f_456', 'token_2'),
+(@uid3, 'google', 'g_789', 'token_3'),
+(@uid4, 'github', 'gh_111', 'token_4');
+
+
+INSERT INTO topics (name, description)
+VALUES
+(N'Lịch sử FPT', N'Giới thiệu quá trình hình thành và phát triển Đại học FPT'),
+(N'Kiến trúc xanh', N'Các công trình thân thiện với môi trường tại campus'),
+(N'Ẩm thực sinh viên', N'Các khu ăn uống, căng tin trong trường'),
+(N'Hoạt động ngoại khóa', N'Sự kiện, câu lạc bộ và hoạt động sinh viên');
+
+
+INSERT INTO tours (title, type, location_ids)
+VALUES
+(N'Tour tham quan khu học tập', 'guide', '["Tòa Beta","Tòa Delta","Thư viện ĐH FPT (Delta)"]'),
+(N'Tour khám phá ký túc xá', 'virtual', '["Dom A","Dom B","Dom C"]');
+
+DECLARE @l1 UNIQUEIDENTIFIER = (SELECT TOP 1 id FROM locations WHERE name=N'Tòa Alpha');
+DECLARE @l2 UNIQUEIDENTIFIER = (SELECT TOP 1 id FROM locations WHERE name=N'Hồ Đào Cóc');
+DECLARE @u1 UNIQUEIDENTIFIER = (SELECT TOP 1 id FROM users WHERE email='a@student.fpt.edu.vn');
+DECLARE @u2 UNIQUEIDENTIFIER = (SELECT TOP 1 id FROM users WHERE email='b@guest.com');
+
+INSERT INTO analytics (user_id, location_id, action)
+VALUES
+(@u1, @l1, 'view'),
+(@u2, @l2, 'search'),
+(@u1, @l2, 'view_location');
+
+
+INSERT INTO partners (name, type, contact_email, phone, website, description)
+VALUES
+(N'VinAI Research', 'investor', 'contact@vinai.vn', '0901123123', 'https://vinai.vn', N'Hợp tác nghiên cứu AI và thị giác máy tính'),
+(N'FPT Software', 'business_partner', 'info@fsoft.com.vn', '02873002222', 'https://fptsoftware.com', N'Đối tác công nghệ chính của dự án AILENS'),
+(N'Thế Giới Số', 'supplier', 'sales@thegioiso.vn', '0912345678', 'https://thegioiso.vn', N'Cung cấp thiết bị camera AR'),
+(N'Căng Tin Beta', 'service', 'beta@fpt.edu.vn', '0909988776', NULL, N'Đối tác dịch vụ ăn uống tại khu Beta'),
+(N'FlexSim VN', 'business_partner', 'contact@flexsim.vn', '0839876543', 'https://flexsim.vn', N'Đối tác mô phỏng hệ thống logistics');
+

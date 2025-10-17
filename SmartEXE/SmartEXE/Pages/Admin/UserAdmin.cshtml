@@ -1,4 +1,35 @@
 ﻿@page
 @model SmartEXE.Pages.Admin.UserAdminModel
 @{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Dashboard";
+    ViewData["ActivePage"] = "Dashboard";
 }
+<h2 class="page-title">📊 Tổng quan hệ thống AILENS</h2>
+
+<div class="row g-4">
+    <div class="col-md-3">
+        <div class="card bg-warning text-white p-4">
+            <p>Đối tác hợp tác</p>
+            <h3>@Model.TotalPartners</h3>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-primary text-white p-4">
+            <p>Tài khoản đăng ký</p>
+            <h3>@Model.TotalUsers</h3>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-success text-white p-4">
+            <p>Lượng content</p>
+            <h3>@Model.TotalContent</h3>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-danger text-white p-4">
+            <p>Lượng tương tác</p>
+            <h3>@Model.TotalInteractions</h3>
+        </div>
+    </div>
+</div>

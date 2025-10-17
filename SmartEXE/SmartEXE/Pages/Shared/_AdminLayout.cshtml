@@ -1,0 +1,102 @@
+﻿@*
+  Layout chung cho tất cả trang Admin
+  Dùng lại navbar, footer, CSS thống nhất
+*@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - AILENS Admin</title>
+
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/bootstrap-icons.css" rel="stylesheet" />
+
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background-color: #212529;
+            padding: 12px 40px;
+        }
+
+        .navbar-brand {
+            font-weight: 600;
+            color: #ffc107 !important;
+            font-size: 20px;
+        }
+
+        .navbar-nav .nav-link {
+            color: #f8f9fa !important;
+            font-weight: 500;
+            margin-right: 20px;
+            transition: 0.2s;
+        }
+
+            .navbar-nav .nav-link:hover,
+            .navbar-nav .nav-link.active {
+                color: #ffc107 !important;
+            }
+
+        /* ===== PAGE BODY ===== */
+        .admin-container {
+            padding: 40px;
+        }
+
+        h2.page-title {
+            font-size: 26px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        footer {
+            text-align: center;
+            color: #777;
+            padding: 20px;
+            font-size: 14px;
+            border-top: 1px solid #ddd;
+            margin-top: 40px;
+        }
+
+        .card {
+            border-radius: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="/Admin/UserAdmin">AILENS Admin</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link @(ViewData["ActivePage"] == "Dashboard" ? "active" : "")" href="/Admin/UserAdmin">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link @(ViewData["ActivePage"] == "Partner" ? "active" : "")" href="/Admin/PartnerAdmin">Đối tác</a></li>
+                <li class="nav-item"><a class="nav-link @(ViewData["ActivePage"] == "Location" ? "active" : "")" href="/Admin/LocationAdmin">Địa điểm</a></li>
+                <li class="nav-item"><a class="nav-link @(ViewData["ActivePage"] == "Topic" ? "active" : "")" href="/Admin/TopicAdmin">Chủ đề</a></li>
+                <li class="nav-item"><a class="nav-link @(ViewData["ActivePage"] == "Tour" ? "active" : "")" href="/Admin/TourManage">Tours</a></li>
+                <li class="nav-item"><a class="nav-link @(ViewData["ActivePage"] == "Analytics" ? "active" : "")" href="/Admin/Analytics">Thống kê</a></li>
+                <li class="nav-item"><a class="nav-link text-danger" href="/Common/Logout">Đăng xuất</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="admin-container">
+        @RenderBody()
+    </main>
+
+    <footer>
+        © 2025 AILENS Admin Panel – FPT University Project
+    </footer>
+
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

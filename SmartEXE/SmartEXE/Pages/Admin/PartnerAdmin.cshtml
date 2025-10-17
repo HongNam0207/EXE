@@ -1,0 +1,83 @@
+﻿@page
+@model SmartEXE.Pages.Admin.PartnerAdminModel
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Quản lý Đối tác";
+    ViewData["ActivePage"] = "Partner";
+}
+<h2 class="page-title">🤝 Quản lý Đối tác</h2>
+
+<!-- FORM THÊM -->
+<div class="card mb-4">
+    <div class="card-header bg-primary text-white">Thêm đối tác mới</div>
+    <div class="card-body">
+        <form method="post" asp-page-handler="Create">
+            <div class="row">
+                <div class="col-md-4 mb-2">
+                    <label>Tên đối tác</label>
+                    <input asp-for="PartnerInput.Name" class="form-control" required />
+                </div>
+                <div class="col-md-4 mb-2">
+                    <label>Loại</label>
+                    <select asp-for="PartnerInput.Type" class="form-select">
+                        <option value="supplier">Nhà cung cấp</option>
+                        <option value="service">Dịch vụ</option>
+                        <option value="investor">Nhà đầu tư</option>
+                        <option value="business_partner">Đối tác kinh doanh</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mb-2">
+                    <label>Email</label>
+                    <input asp-for="PartnerInput.ContactEmail" class="form-control" />
+                </div>
+                <div class="col-md-4 mb-2">
+                    <label>Điện thoại</label>
+                    <input asp-for="PartnerInput.Phone" class="form-control" />
+                </div>
+                <div class="col-md-4 mb-2">
+                    <label>Website</label>
+                    <input asp-for="PartnerInput.Website" class="form-control" />
+                </div>
+                <div class="col-md-8 mb-2">
+                    <label>Mô tả</label>
+                    <textarea asp-for="PartnerInput.Description" class="form-control" rows="2"></textarea>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success mt-2">Lưu đối tác</button>
+        </form>
+    </div>
+</div>
+
+<!-- DANH SÁCH -->
+<table class="table table-hover table-bordered bg-white shadow-sm">
+    <thead class="table-dark">
+        <tr>
+            <th>Tên</th>
+            <th>Loại</th>
+            <th>Email</th>
+            <th>Điện thoại</th>
+            <th>Website</th>
+            <th>Mô tả</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model.Partners)
+        {
+            <tr>
+                <td>@p.Name</td>
+                <td>@p.Type</td>
+                <td>@p.ContactEmail</td>
+                <td>@p.Phone</td>
+                <td>@p.Website</td>
+                <td>@p.Description</td>
+                <td>
+                    <form method="post" asp-page-handler="Delete" style="display:inline">
+                        <input type="hidden" name="id" value="@p.Id" />
+                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Xóa đối tác này?')">Xóa</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

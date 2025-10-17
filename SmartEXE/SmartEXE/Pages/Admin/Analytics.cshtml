@@ -1,4 +1,55 @@
 ﻿@page
 @model SmartEXE.Pages.Admin.AnalyticsModel
 @{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Thống kê Hệ thống";
+    ViewData["ActivePage"] = "Analytics";
 }
+
+<h2 class="page-title">📈 Thống kê tương tác</h2>
+
+<div class="row g-4">
+    <div class="col-md-4">
+        <div class="card bg-success text-white p-4">
+            <p>Lượt xem / View</p>
+            <h3>@Model.TotalViews</h3>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-primary text-white p-4">
+            <p>Lượt tìm kiếm / Search</p>
+            <h3>@Model.TotalSearches</h3>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-warning text-dark p-4">
+            <p>Lượt di chuyển / Navigate</p>
+            <h3>@Model.TotalNavigations</h3>
+        </div>
+    </div>
+</div>
+
+<hr class="my-4" />
+
+<h4 class="mb-3">🧩 Danh sách lượt tương tác chi tiết</h4>
+<table class="table table-hover table-bordered bg-white shadow-sm">
+    <thead class="table-dark">
+        <tr>
+            <th>Người dùng</th>
+            <th>Địa điểm</th>
+            <th>Hành động</th>
+            <th>Thời gian</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var a in Model.Analytics)
+        {
+            <tr>
+                <td>@a.User?.Name</td>
+                <td>@a.Location?.Name</td>
+                <td>@a.Action</td>
+                <td>@a.Timestamp?.ToString("dd/MM/yyyy HH:mm")</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,4 +1,118 @@
 ﻿@page
-@model SmartEXE.Pages.Common.ginModel
+@model SmartEXE.Pages.Common.LoginModel
 @{
+    Layout = null;
 }
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Đăng nhập - AILENS</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/bootstrap-icons.css" />
+    <link rel="stylesheet" href="~/css/templatemo-topic-listing.css" />
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #74d0c0, #0a5275);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-card {
+            background-color: #fff;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+
+            .login-card h3 {
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 700;
+                margin-bottom: 25px;
+                color: #072d44;
+            }
+
+        .form-control {
+            border-radius: 10px;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+        }
+
+        .btn-login {
+            background-color: #0a5275;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-weight: 600;
+            padding: 12px 0;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+            .btn-login:hover {
+                background-color: #093c56;
+            }
+
+        .text-small {
+            font-size: 14px;
+            margin-top: 15px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #0a5275;
+        }
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+        .back-home {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 20px;
+            color: white;
+            text-decoration: none;
+        }
+
+            .back-home:hover {
+                opacity: 0.8;
+            }
+    </style>
+</head>
+
+<body>
+    <a asp-page="/Customer/Home" class="back-home"><i class="bi bi-arrow-left"></i> Trang chủ</a>
+
+    <div class="login-card">
+        <h3>Đăng nhập vào AILENS</h3>
+        <form method="post">
+            <input type="email" name="Email" class="form-control" placeholder="Email" required />
+            <input type="password" name="Password" class="form-control" placeholder="Mật khẩu" required />
+
+            <button type="submit" class="btn btn-login">Đăng nhập</button>
+        </form>
+
+        <p class="text-small">Chưa có tài khoản? <a asp-page="/Common/Register">Đăng ký ngay</a></p>
+    </div>
+
+    <!-- JS -->
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
