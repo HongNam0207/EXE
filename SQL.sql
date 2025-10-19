@@ -1,6 +1,14 @@
-﻿-- Create database AILENS
--- use AILENS
--- 1. Bảng users
+﻿-- ================================
+-- CREATE DATABASE
+-- ================================
+CREATE DATABASE AILENS;
+GO
+USE AILENS;
+GO
+
+-- ================================
+-- 1. USERS
+-- ================================
 CREATE TABLE users (
     id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
     name NVARCHAR(100) NOT NULL,
@@ -12,10 +20,12 @@ CREATE TABLE users (
     created_at DATETIME DEFAULT GETDATE()
 );
 
--- 2. Bảng auth_providers
+-- ================================
+-- 2. AUTH_PROVIDERS
+-- ================================
 CREATE TABLE auth_providers (
     id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
-    user_id UNIQUEIDENTIFIER FOREIGN KEY REFERENCES users(id),
+    user_id UNIQUEIDENTIFIER NOT NULL FOREIGN KEY REFERENCES users(id),
     provider NVARCHAR(50),
     provider_uid NVARCHAR(255),
     access_token NVARCHAR(MAX),
@@ -23,11 +33,13 @@ CREATE TABLE auth_providers (
     created_at DATETIME DEFAULT GETDATE()
 );
 
--- 3. Bảng locations
+-- ================================
+-- 3. LOCATIONS
+-- ================================
 CREATE TABLE locations (
     id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
     name NVARCHAR(255) NOT NULL,
-    type NVARCHAR(100) CHECK (type IN ('history', 'nature', 'building', 'service', 'other')),
+    type NVARCHAR(100) CHECK (type IN ('building', 'service', 'nature', 'food', 'supermarket', 'other')),
     description NVARCHAR(MAX),
     coordinates NVARCHAR(MAX),
     image_url NVARCHAR(500),
@@ -37,21 +49,27 @@ CREATE TABLE locations (
     updated_at DATETIME DEFAULT GETDATE()
 );
 
--- 4. Bảng topics
+-- ================================
+-- 4. TOPICS
+-- ================================
 CREATE TABLE topics (
     id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
     name NVARCHAR(100) NOT NULL,
     description NVARCHAR(MAX)
 );
 
--- 5. Bảng location_topics
+-- ================================
+-- 5. LOCATION_TOPICS (many-to-many)
+-- ================================
 CREATE TABLE location_topics (
     location_id UNIQUEIDENTIFIER FOREIGN KEY REFERENCES locations(id),
     topic_id UNIQUEIDENTIFIER FOREIGN KEY REFERENCES topics(id),
     PRIMARY KEY (location_id, topic_id)
 );
 
--- 6. Bảng chat_logs
+-- ================================
+-- 6. CHAT_LOGS
+-- ================================
 CREATE TABLE chat_logs (
     id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
     user_id UNIQUEIDENTIFIER FOREIGN KEY REFERENCES users(id),
@@ -60,14 +78,18 @@ CREATE TABLE chat_logs (
     timestamp DATETIME DEFAULT GETDATE()
 );
 
--- 7. Bảng maps
+-- ================================
+-- 7. MAPS
+-- ================================
 CREATE TABLE maps (
     id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
     location_id UNIQUEIDENTIFIER FOREIGN KEY REFERENCES locations(id),
     map_data NVARCHAR(MAX)
 );
 
--- 8. Bảng tours
+-- ================================
+-- 8. TOURS
+-- ================================
 CREATE TABLE tours (
     id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
     title NVARCHAR(255) NOT NULL,
@@ -75,7 +97,9 @@ CREATE TABLE tours (
     location_ids NVARCHAR(MAX)
 );
 
--- 9. Bảng admin_logs
+-- ================================
+-- 9. ADMIN_LOGS
+-- ================================
 CREATE TABLE admin_logs (
     id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
     admin_id UNIQUEIDENTIFIER FOREIGN KEY REFERENCES users(id),
@@ -83,16 +107,58 @@ CREATE TABLE admin_logs (
     timestamp DATETIME DEFAULT GETDATE()
 );
 
--- 10. Bảng analytics
+-- ================================
+-- 10. ANALYTICS
+-- ================================
 CREATE TABLE analytics (
     id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
     user_id UNIQUEIDENTIFIER FOREIGN KEY REFERENCES users(id),
     location_id UNIQUEIDENTIFIER FOREIGN KEY REFERENCES locations(id),
-    action NVARCHAR(50) CHECK (action IN ('view', 'navigate', 'search')),
+    action NVARCHAR(50) CHECK (action IN ('view', 'navigate', 'search', 'view_location')),
     timestamp DATETIME DEFAULT GETDATE()
 );
 
+-- ================================
+-- 11. PARTNERS
+-- ================================
+CREATE TABLE partners (
+    id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+    name NVARCHAR(255) NOT NULL,
+    type NVARCHAR(100) CHECK (type IN ('supplier', 'service', 'investor', 'business_partner')),
+    contact_email NVARCHAR(255),
+    phone NVARCHAR(50),
+    website NVARCHAR(255),
+    description NVARCHAR(MAX),
+    created_at DATETIME DEFAULT GETDATE()
+);
+GO
 
+-- ================================
+-- SAMPLE DATA
+-- ================================
+
+-- USERS
+INSERT INTO users (name, email, password_hash, role)
+VALUES
+(N'Nguyễn Văn A', 'a@student.fpt.edu.vn', 'hashed123', 'student'),
+(N'Lê Thị B', 'b@guest.com', 'hashed123', 'guest'),
+(N'Trần Văn C', 'c@fpt.edu.vn', 'hashed123', 'admin'),
+(N'Ngô Minh D', 'd@student.fpt.edu.vn', 'hashed123', 'student');
+
+DECLARE @uid1 UNIQUEIDENTIFIER = (SELECT TOP 1 id FROM users WHERE email='a@student.fpt.edu.vn');
+DECLARE @uid2 UNIQUEIDENTIFIER = (SELECT TOP 1 id FROM users WHERE email='b@guest.com');
+DECLARE @uid3 UNIQUEIDENTIFIER = (SELECT TOP 1 id FROM users WHERE email='c@fpt.edu.vn');
+DECLARE @uid4 UNIQUEIDENTIFIER = (SELECT TOP 1 id FROM users WHERE email='d@student.fpt.edu.vn');
+
+-- AUTH_PROVIDERS
+INSERT INTO auth_providers (user_id, provider, provider_uid, access_token)
+VALUES
+(@uid1, 'google', 'g_123', 'token_1'),
+(@uid2, 'facebook', 'f_456', 'token_2'),
+(@uid3, 'google', 'g_789', 'token_3'),
+(@uid4, 'github', 'gh_111', 'token_4');
+
+-- LOCATIONS
 INSERT INTO locations (name, type, description, coordinates)
 VALUES
 (N'Thư viện ĐH FPT (Delta)', 'building', N'Thư viện – khu học tập trung', '21.014775,105.525468'),
@@ -115,60 +181,7 @@ VALUES
 (N'Sân tập lái ô tô Hòa Lạc', 'other', N'Khu tập lái xe', '21.011425,105.524400'),
 (N'Điểm đỗ xe buýt Hòa Lạc', 'other', N'Điểm đỗ xe buýt chính khuôn viên', '21.012685,105.527702');
 
-
-SELECT 
-    name, type_desc
-FROM sys.check_constraints
-WHERE parent_object_id = OBJECT_ID('locations');
-
-
-ALTER TABLE locations DROP CONSTRAINT CK__locations__type__5629CD9C;
-
-ALTER TABLE locations
-ADD CONSTRAINT CK_locations_type
-CHECK (type IN ('building', 'service', 'nature', 'food', 'supermarket', 'other'));
-
-SELECT name
-FROM sys.check_constraints
-WHERE parent_object_id = OBJECT_ID('analytics');
-
-ALTER TABLE analytics DROP CONSTRAINT CK__analytics__actio__628FA481;
-
-ALTER TABLE analytics
-ADD CONSTRAINT CK_analytics_action
-CHECK (action IN ('view', 'navigate', 'search', 'view_location'));
-
-CREATE TABLE partners (
-    id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
-    name NVARCHAR(255) NOT NULL,
-    type NVARCHAR(100) CHECK (type IN ('supplier', 'service', 'investor', 'business_partner')),
-    contact_email NVARCHAR(255),
-    phone NVARCHAR(50),
-    website NVARCHAR(255),
-    description NVARCHAR(MAX),
-    created_at DATETIME DEFAULT GETDATE()
-);
-
-INSERT INTO users (name, email, password_hash, role)
-VALUES
-(N'Nguyễn Văn A', 'a@student.fpt.edu.vn', 'hashed123', 'student'),
-(N'Lê Thị B', 'b@guest.com', 'hashed123', 'guest'),
-(N'Trần Văn C', 'c@fpt.edu.vn', 'hashed123', 'admin'),
-(N'Ngô Minh D', 'd@student.fpt.edu.vn', 'hashed123', 'student');
-
-DECLARE @uid1 UNIQUEIDENTIFIER = (SELECT TOP 1 id FROM users WHERE email='a@student.fpt.edu.vn');
-DECLARE @uid2 UNIQUEIDENTIFIER = (SELECT TOP 1 id FROM users WHERE email='b@guest.com');
-DECLARE @uid3 UNIQUEIDENTIFIER = (SELECT TOP 1 id FROM users WHERE email='c@fpt.edu.vn');
-DECLARE @uid4 UNIQUEIDENTIFIER = (SELECT TOP 1 id FROM users WHERE email='d@student.fpt.edu.vn');
-
-INSERT INTO auth_providers (user_id, provider, provider_uid, access_token)
-VALUES
-(@uid1, 'google', 'g_123', 'token_1'),
-(@uid2, 'facebook', 'f_456', 'token_2'),
-(@uid3, 'google', 'g_789', 'token_3'),
-(@uid4, 'github', 'gh_111', 'token_4');
-
-
+-- TOPICS
 INSERT INTO topics (name, description)
 VALUES
 (N'Lịch sử FPT', N'Giới thiệu quá trình hình thành và phát triển Đại học FPT'),
@@ -176,24 +189,22 @@ VALUES
 (N'Ẩm thực sinh viên', N'Các khu ăn uống, căng tin trong trường'),
 (N'Hoạt động ngoại khóa', N'Sự kiện, câu lạc bộ và hoạt động sinh viên');
 
-
+-- TOURS
 INSERT INTO tours (title, type, location_ids)
 VALUES
 (N'Tour tham quan khu học tập', 'guide', '["Tòa Beta","Tòa Delta","Thư viện ĐH FPT (Delta)"]'),
 (N'Tour khám phá ký túc xá', 'virtual', '["Dom A","Dom B","Dom C"]');
 
+-- ANALYTICS
 DECLARE @l1 UNIQUEIDENTIFIER = (SELECT TOP 1 id FROM locations WHERE name=N'Tòa Alpha');
 DECLARE @l2 UNIQUEIDENTIFIER = (SELECT TOP 1 id FROM locations WHERE name=N'Hồ Đào Cóc');
-DECLARE @u1 UNIQUEIDENTIFIER = (SELECT TOP 1 id FROM users WHERE email='a@student.fpt.edu.vn');
-DECLARE @u2 UNIQUEIDENTIFIER = (SELECT TOP 1 id FROM users WHERE email='b@guest.com');
-
 INSERT INTO analytics (user_id, location_id, action)
 VALUES
-(@u1, @l1, 'view'),
-(@u2, @l2, 'search'),
-(@u1, @l2, 'view_location');
+(@uid1, @l1, 'view'),
+(@uid2, @l2, 'search'),
+(@uid1, @l2, 'view_location');
 
-
+-- PARTNERS
 INSERT INTO partners (name, type, contact_email, phone, website, description)
 VALUES
 (N'VinAI Research', 'investor', 'contact@vinai.vn', '0901123123', 'https://vinai.vn', N'Hợp tác nghiên cứu AI và thị giác máy tính'),
@@ -201,4 +212,3 @@ VALUES
 (N'Thế Giới Số', 'supplier', 'sales@thegioiso.vn', '0912345678', 'https://thegioiso.vn', N'Cung cấp thiết bị camera AR'),
 (N'Căng Tin Beta', 'service', 'beta@fpt.edu.vn', '0909988776', NULL, N'Đối tác dịch vụ ăn uống tại khu Beta'),
 (N'FlexSim VN', 'business_partner', 'contact@flexsim.vn', '0839876543', 'https://flexsim.vn', N'Đối tác mô phỏng hệ thống logistics');
-
