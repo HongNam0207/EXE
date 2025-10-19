@@ -9,29 +9,32 @@
     }
   },
   "profiles": {
+    "https": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "applicationUrl": "https://localhost:8888;http://localhost:5187",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "GOOGLE_APPLICATION_CREDENTIALS": "D:\\FPT_7\\EXE101\\EXE\\SmartEXE\\SmartEXE\\Keys\\ailens-key.json"
+      }
+    },
     "http": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "applicationUrl": "http://localhost:5187",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
-    "https": {
-      "commandName": "Project",
-      "dotnetRunMessages": true,
-      "launchBrowser": true,
-      "applicationUrl": "https://localhost:8888",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "GOOGLE_APPLICATION_CREDENTIALS": "D:\\FPT_7\\EXE101\\EXE\\SmartEXE\\SmartEXE\\Keys\\ailens-key.json"
       }
     },
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "GOOGLE_APPLICATION_CREDENTIALS": "D:\\FPT_7\\EXE101\\EXE\\SmartEXE\\SmartEXE\\Keys\\ailens-key.json"
       }
     }
   }
