@@ -89,7 +89,7 @@ namespace SmartEXE.Pages.Common
                     Name = !string.IsNullOrEmpty(name) ? name : email,
                     Email = email,
                     AvatarUrl = avatar,
-                    LoginMethod = "google",
+                    LoginMethod = "Google",
                     Role = "student",
                     CreatedAt = DateTime.UtcNow
                 };

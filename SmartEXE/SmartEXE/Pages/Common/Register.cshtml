@@ -121,24 +121,19 @@
     <div class="register-card">
         <h3>Tạo tài khoản AILENS</h3>
 
-        <!-- Hiển thị lỗi chung -->
-        <div asp-validation-summary="All" class="text-danger mb-3"></div>
+        <!-- Hiển thị tất cả lỗi -->
+        <div asp-validation-summary="All" class="alert alert-danger"></div>
 
         <form method="post">
-            <input asp-for="Input.FirstName" class="form-control" placeholder="Họ" />
-            <span asp-validation-for="Input.FirstName" class="text-danger small"></span>
+            <input asp-for="Input.FirstName" class="form-control mb-2" placeholder="Họ" />
 
-            <input asp-for="Input.LastName" class="form-control" placeholder="Tên" />
-            <span asp-validation-for="Input.LastName" class="text-danger small"></span>
+            <input asp-for="Input.LastName" class="form-control mb-2" placeholder="Tên" />
 
-            <input asp-for="Input.Email" class="form-control" placeholder="Email" />
-            <span asp-validation-for="Input.Email" class="text-danger small"></span>
+            <input asp-for="Input.Email" class="form-control mb-2" placeholder="Email" />
 
-            <input asp-for="Input.Password" type="password" class="form-control" placeholder="Mật khẩu" />
-            <span asp-validation-for="Input.Password" class="text-danger small"></span>
+            <input asp-for="Input.Password" type="password" class="form-control mb-2" placeholder="Mật khẩu" />
 
-            <input asp-for="Input.ConfirmPassword" type="password" class="form-control" placeholder="Xác nhận mật khẩu" />
-            <span asp-validation-for="Input.ConfirmPassword" class="text-danger small"></span>
+            <input asp-for="Input.ConfirmPassword" type="password" class="form-control mb-2" placeholder="Xác nhận mật khẩu" />
 
             <button type="submit" class="btn btn-register">Đăng ký</button>
         </form>
@@ -152,6 +147,7 @@
 
         <p class="text-small">Đã có tài khoản? <a asp-page="/Common/Login">Đăng nhập ngay</a></p>
     </div>
+
 
 
     <!-- JS -->
