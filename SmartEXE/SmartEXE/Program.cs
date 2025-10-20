@@ -1,19 +1,40 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.EntityFrameworkCore;
 using SmartEXE.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ✅ Add services
+// Services
 builder.Services.AddRazorPages();
-builder.Services.AddSession(); // Thêm session để lưu role, username, v.v.
+builder.Services.AddSession();
 
-// ✅ Kết nối DB
 builder.Services.AddDbContext<AilensContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("MyCnn")));
 
+// 🔸 Bật Controllers (đặt TRƯỚC Build)
+builder.Services.AddControllers();
+
+// Auth
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+})
+.AddCookie()
+.AddGoogle(options =>
+{
+    options.ClientId = builder.Configuration["Authentication:Google:ClientId"];
+    options.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
+    options.Scope.Add("openid");
+    options.Scope.Add("profile");
+    options.Scope.Add("email");
+    options.SaveTokens = true;
+});
+
 var app = builder.Build();
 
-// ✅ Configure middleware
+// Middleware
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
@@ -25,18 +46,20 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseSession();       // Phải đặt sau UseRouting và trước MapRazorPages
+app.UseSession();
+
+app.UseAuthentication();
 app.UseAuthorization();
 
-// ✅ Cấu hình route mặc định: mở trang /Customer/Home
+// Route mặc định về /Customer/Home
 app.MapGet("/", context =>
 {
     context.Response.Redirect("/Customer/Home");
     return Task.CompletedTask;
 });
 
-// ✅ Map Razor Pages
+// 🔸 Map Razor Pages & API (đặt CUỐI)
 app.MapRazorPages();
+app.MapControllers();
 
-// ✅ Chạy ứng dụng
 app.Run();

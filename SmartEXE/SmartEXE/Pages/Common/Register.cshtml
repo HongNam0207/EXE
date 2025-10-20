@@ -1,4 +1,156 @@
 ﻿@page
 @model SmartEXE.Pages.Common.RegisterModel
 @{
+    Layout = null;
 }
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Đăng ký - AILENS</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/bootstrap-icons.css" />
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #74d0c0, #0a5275);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .register-card {
+            background-color: #fff;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 450px;
+            width: 100%;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+
+            .register-card h3 {
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 700;
+                margin-bottom: 25px;
+                color: #072d44;
+            }
+
+        .form-control {
+            border-radius: 10px;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+        }
+
+        .btn-register {
+            background-color: #0a5275;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-weight: 600;
+            padding: 12px 0;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+            .btn-register:hover {
+                background-color: #093c56;
+            }
+
+        .text-small {
+            font-size: 14px;
+            margin-top: 15px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #0a5275;
+        }
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+        .back-home {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 20px;
+            color: white;
+            text-decoration: none;
+        }
+
+            .back-home:hover {
+                opacity: 0.8;
+            }
+
+        .btn-google {
+            background-color: #fff;
+            color: #444;
+            border: 1px solid #ddd;
+            font-weight: 500;
+            padding: 10px;
+            transition: 0.3s;
+        }
+
+            .btn-google:hover {
+                background-color: #f8f9fa;
+                border-color: #bbb;
+            }
+
+            .btn-google i {
+                color: #DB4437;
+                font-size: 1.2rem;
+            }
+    </style>
+</head>
+
+<body>
+    <a asp-page="/Customer/Home" class="back-home"><i class="bi bi-arrow-left"></i> Trang chủ</a>
+
+    <div class="register-card">
+        <h3>Tạo tài khoản AILENS</h3>
+
+        <!-- Hiển thị tất cả lỗi -->
+        <div asp-validation-summary="All" class="alert alert-danger"></div>
+
+        <form method="post">
+            <input asp-for="Input.FirstName" class="form-control mb-2" placeholder="Họ" />
+
+            <input asp-for="Input.LastName" class="form-control mb-2" placeholder="Tên" />
+
+            <input asp-for="Input.Email" class="form-control mb-2" placeholder="Email" />
+
+            <input asp-for="Input.Password" type="password" class="form-control mb-2" placeholder="Mật khẩu" />
+
+            <input asp-for="Input.ConfirmPassword" type="password" class="form-control mb-2" placeholder="Xác nhận mật khẩu" />
+
+            <button type="submit" class="btn btn-register">Đăng ký</button>
+        </form>
+
+        <!-- Nút Register with Google -->
+        <form method="post" asp-page-handler="Google">
+            <button type="submit" class="btn btn-google w-100 mt-2">
+                <i class="bi bi-google me-2"></i> Đăng ký với Google
+            </button>
+        </form>
+
+        <p class="text-small">Đã có tài khoản? <a asp-page="/Common/Login">Đăng nhập ngay</a></p>
+    </div>
+
+
+
+    <!-- JS -->
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
