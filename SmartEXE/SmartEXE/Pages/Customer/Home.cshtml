@@ -8,7 +8,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <meta name="description" content="">
     <meta name="author" content="">
     <title>FPT Campus Explorer - AILENS</title>
@@ -21,12 +20,63 @@
     <link rel="stylesheet" href="~/css/bootstrap.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/bootstrap-icons.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/templatemo-topic-listing.css" asp-append-version="true" />
+    <style>
+        /* 🔹 Khung danh sách gợi ý */
+        #suggestion-list {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: #fff;
+            border-radius: 12px;
+            margin-top: 6px;
+            padding: 6px 0;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            display: none;
+            overflow: hidden;
+        }
+
+            /* 🔹 Item gợi ý */
+            #suggestion-list li {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start; /* 👈 Căn toàn bộ nội dung về bên trái */
+                gap: 10px;
+                padding: 10px 18px;
+                font-size: 16px;
+                color: #202124;
+                cursor: pointer;
+                text-align: left; /* 👈 Đảm bảo text nằm về trái */
+                transition: all 0.2s ease;
+            }
+
+                /* 🔹 Viền ngăn cách */
+                #suggestion-list li + li {
+                    border-top: 1px solid #f1f3f4;
+                }
+
+                /* 🔹 Hover hiệu ứng */
+                #suggestion-list li:hover {
+                    background-color: #f1f3f4;
+                }
+
+            /* 🔹 Cuộn mượt (nếu danh sách dài) */
+            #suggestion-list::-webkit-scrollbar {
+                width: 6px;
+            }
+
+            #suggestion-list::-webkit-scrollbar-thumb {
+                background: #d6d6d6;
+                border-radius: 8px;
+            }
+
+    </style>
 
 </head>
 
 <body id="top">
     <main>
-
         <!-- NAVBAR -->
         <nav class="navbar navbar-expand-lg">
             <div class="container">
@@ -37,9 +87,7 @@
 
                 <div class="d-lg-none ms-auto me-4">
                     <a asp-page="/Common/Login" class="navbar-icon bi-person"></a>
-
                 </div>
-
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
@@ -65,32 +113,38 @@
         <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-8 col-12 mx-auto">
-                        <h1 class="text-white text-center">Khám phá - Kết nối</h1>
-                        <h6 style="color: #072D44;" class="text-center">Nền tảng AI khám phá khuôn viên thông minh FPT</h6>
+                    <div class="col-lg-8 col-12 mx-auto text-center">
+                        <h1 class="text-white">Khám phá - Kết nối</h1>
+                        <h6 style="color: #072D44;">Nền tảng AI khám phá khuôn viên thông minh FPT</h6>
 
-                        <form method="get" class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search">
-                            <div class="input-group input-group-lg">
+                        <form method="get" class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search" onsubmit="return goToMap(event)">
+                            <div class="input-group input-group-lg position-relative">
                                 <span class="input-group-text bi-search" id="basic-addon1"></span>
                                 <input name="keyword" type="search" class="form-control" id="keyword"
-                                       placeholder="Giảng đường, Ký túc xá, Căng tin, Thư viện ..." aria-label="Search">
-                                <button type="submit" class="form-control">Search</button>
+                                       placeholder="Giảng đường, Ký túc xá, Căng tin, Thư viện ..."
+                                       aria-label="Search" autocomplete="off" oninput="showSuggestions()">
+                                <button type="submit" class="form-control">Tìm kiếm</button>
+
+                                <!-- Gợi ý -->
+                                <ul id="suggestion-list" class="list-group position-absolute w-100 shadow"
+                                    style="top: 100%; z-index: 1000; display: none;"></ul>
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- EXPLORE TOOLS -->
-        <section class="explore-section section-padding" id="section_1">
+        <section class="explore-section section-padding" id="section_2">
             <div class="container text-center mb-4">
                 <h2>Khám phá các công cụ AI hỗ trợ</h2>
             </div>
 
             <div class="container">
                 <div class="row g-4">
-
+                    <!-- Bản đồ -->
                     <div class="col-lg-6 col-md-6 col-12">
                         <div class="custom-block bg-white shadow-lg">
                             <a asp-page="/Customer/Map">
@@ -101,12 +155,13 @@
                                     </div>
                                     <span class="badge bg-warning rounded-pill ms-auto">Hot</span>
                                 </div>
-                                <img src="https://scontent.fhan19-1.fna.fbcdn.net/v/t39.30808-6/484176493_9314250981994998_5962696195847368675_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeEEKBFYp5EwzUyu26GeMcGe6t1cnzyj0TDq3VyfPKPRMIMcXKQu0NPZVK_S5uENA4mGvGD0I-WpARECfyqUhtbP&_nc_ohc=yT-fhb-POUYQ7kNvwE2mTc-&_nc_oc=Adny1_5zDW105lUQFcKDwY8gHnLnGM3qOk9a4nOJUAYQutJRvE6cz5Bfv7Rayfe5rYQ&_nc_zt=23&_nc_ht=scontent.fhan19-1.fna&_nc_gid=BgwKQd2BDnnR0R02p3c5Wg&oh=00_AfeZ6CHPHUo5q80nL9bpI1F37QITZkYRg9Dh0CDLnrqCnA&oe=68EE59B3"
-                                     class="custom-block-image img-fluid" alt="Bản đồ nội khu FPT">
+                               @*  <img src="https://scontent.fhan19-1.fna.fbcdn.net/v/t39.30808-6/484176493_9314250981994998_5962696195847368675_n.jpg"
+                                     class="custom-block-image img-fluid" alt="Bản đồ nội khu FPT"> *@
                             </a>
                         </div>
                     </div>
 
+                    <!-- Camera -->
                     <div class="col-lg-6 col-md-6 col-12">
                         <div class="custom-block bg-white shadow-lg">
                             <a asp-page="/Customer/Scanner">
@@ -117,11 +172,12 @@
                                     </div>
                                     <span class="badge bg-primary rounded-pill ms-auto">AI</span>
                                 </div>
-                                <img src="~/images/topics/IMG_0187.jpg" class="custom-block-image img-fluid" alt="Quét bằng Camera AI">
+                               @* <img src="~/images/topics/IMG_0187.jpg" class="custom-block-image img-fluid" alt="Quét bằng Camera AI"> *@
                             </a>
                         </div>
                     </div>
 
+                    <!-- Chatbot -->
                     <div class="col-lg-6 col-md-6 col-12">
                         <div class="custom-block bg-white shadow-lg">
                             <a asp-page="/Customer/Chatbot">
@@ -132,382 +188,17 @@
                                     </div>
                                     <span class="badge bg-info rounded-pill ms-auto">Beta</span>
                                 </div>
-                                <img src="https://vbee.vn/blog/wp-content/uploads/2023/12/tro-ly-ao.webp" class="custom-block-image img-fluid" alt="Trợ lý ảo AI">
+                                <img src="https://vbee.vn/blog/wp-content/uploads/2023/12/tro-ly-ao.webp"
+                                     class="custom-block-image img-fluid" alt="Trợ lý ảo AI">
                             </a>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
-
-        <section class="explore-section section-padding" id="section_2">
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-12 text-center">
-                        <h2 class="mb-4">Chủ Đề</h1>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="container-fluid">
-                <div class="row">
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="design-tab" data-bs-toggle="tab" data-bs-target="#design-tab-pane" type="button" role="tab" aria-controls="design-tab-pane" aria-selected="true">Thư viện</button>
-                        </li>
-
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="marketing-tab" data-bs-toggle="tab" data-bs-target="#marketing-tab-pane" type="button" role="tab" aria-controls="marketing-tab-pane" aria-selected="false">Giảng đường</button>
-                        </li>
-
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="finance-tab" data-bs-toggle="tab" data-bs-target="#finance-tab-pane" type="button" role="tab" aria-controls="finance-tab-pane" aria-selected="false">Ký túc xá</button>
-                        </li>
-
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="music-tab" data-bs-toggle="tab" data-bs-target="#music-tab-pane" type="button" role="tab" aria-controls="music-tab-pane" aria-selected="false">Căng tin</button>
-                        </li>
-
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="education-tab" data-bs-toggle="tab" data-bs-target="#education-tab-pane" type="button" role="tab" aria-controls="education-tab-pane" aria-selected="false">Phòng học</button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-12">
-                        <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="design-tab-pane" role="tabpanel" aria-labelledby="design-tab" tabindex="0">
-                                <div class="row">
-
-
-
-
-                                    <div class="col-lg-6 col-md-8 mx-auto">
-                                        <div class="custom-block bg-white shadow-lg">
-                                            <a href="topics-detail.html">
-                                                <div class="d-flex">
-                                                    <div>
-                                                        <h5 class="mb-2">Thư viện</h5>
-
-                                                        <p class="mb-0">
-                                                            Không gian học tập hiện đại, nơi bạn có thể đọc sách, mượn tài liệu và tận hưởng môi trường yên tĩnh để nghiên cứu
-
-                                                        </p>
-                                                    </div>
-
-                                                    <span class="badge bg-design rounded-pill ms-auto">100</span>
-                                                </div>
-
-                                                <img src="https://daihoc.fpt.edu.vn/wp-content/uploads/2022/04/dai-hoc-fpt-2-3.jpeg" class="custom-block-image img-fluid" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tab-pane fade" id="marketing-tab-pane" role="tabpanel" aria-labelledby="marketing-tab" tabindex="0">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-8 mx-auto">
-                                        <div class="custom-block bg-white shadow-lg">
-                                            <a href="topics-detail.html">
-                                                <div class="d-flex">
-                                                    <div>
-                                                        <h5 class="mb-2">Giảng đường</h5>
-
-                                                        <p class="mb-0">Nơi tổ chức các buổi học, hội thảo, sự kiện lớn của sinh viên, được trang bị đầy đủ tiện nghi và thiết bị giảng dạy tiên tiến</p>
-                                                    </div>
-
-                                                    <span class="badge bg-advertising rounded-pill ms-auto">30</span>
-                                                </div>
-
-                                                <img src="https://pjm.vn/upload/images/20201217145005_c45147dee729311ef5b5c3003946c48f.jpg" class="custom-block-image img-fluid" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tab-pane fade" id="finance-tab-pane" role="tabpanel" aria-labelledby="finance-tab" tabindex="0">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-8 mx-auto">
-                                        <div class="custom-block bg-white shadow-lg">
-                                            <a href="topics-detail.html">
-                                                <div class="d-flex">
-                                                    <div>
-                                                        <h5 class="mb-2">Ký túc xá</h5>
-
-                                                        <p class="mb-0">Khu nội trú tiện nghi dành cho sinh viên, đảm bảo an ninh và không gian sinh hoạt thân thiện như một mái nhà thứ hai</p>
-                                                    </div>
-
-                                                    <span class="badge bg-finance rounded-pill ms-auto">30</span>
-                                                </div>
-
-                                                <img src="https://daihoc.fpt.edu.vn/wp-content/uploads/2023/08/KTX-DH-FPT-Ha_noi-12.webp" class="custom-block-image img-fluid" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                            </div>
-
-                            <div class="tab-pane fade" id="music-tab-pane" role="tabpanel" aria-labelledby="music-tab" tabindex="0">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-8 mx-auto">
-                                        <div class="custom-block bg-white shadow-lg">
-                                            <a href="topics-detail.html">
-                                                <div class="d-flex">
-                                                    <div>
-                                                        <h5 class="mb-2">Căng tin</h5>
-
-                                                        <p class="mb-0">Khu vực phục vụ ăn uống đa dạng và sạch sẽ, là nơi sinh viên thư giãn, ăn uống và gặp gỡ bạn bè trong ngày học</p>
-                                                    </div>
-
-                                                    <span class="badge bg-music rounded-pill ms-auto">45</span>
-                                                </div>
-
-                                                <img src="https://daihoc.fpt.edu.vn/wp-content/uploads/2023/08/KTX-DH-FPT-Ha_noi-13.webp" class="custom-block-image img-fluid" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-
-
-
-
-                                </div>
-                            </div>
-
-                            <div class="tab-pane fade" id="education-tab-pane" role="tabpanel" aria-labelledby="education-tab" tabindex="0">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-8 mx-auto">
-                                        <div class="custom-block bg-white shadow-lg">
-                                            <a href="topics-detail.html">
-                                                <div class="d-flex">
-                                                    <div>
-                                                        <h5 class="mb-2">Phòng học</h5>
-
-                                                        <p class="mb-0">Không gian học tập linh hoạt, được bố trí theo nhóm nhỏ, phù hợp cho cả học tập cá nhân và làm việc nhóm</p>
-                                                    </div>
-
-                                                    <span class="badge bg-education rounded-pill ms-auto">80</span>
-                                                </div>
-
-                                                <img src="https://daihoc.fpt.edu.vn/wp-content/uploads/2016/12/IMG_6280.jpg" class="custom-block-image img-fluid" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-        </section>
-
-
-        <section class="timeline-section section-padding" id="section_3">
-            <div class="section-overlay"></div>
-
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-12 text-center">
-                        <h2 class="text-white mb-4">Hệ thống hoạt động như thế nào?</h1>
-                    </div>
-
-                    <div class="col-lg-10 col-12 mx-auto">
-                        <div class="timeline-container">
-                            <ul class="vertical-scrollable-timeline" id="vertical-scrollable-timeline">
-                                <div class="list-progress">
-                                    <div class="inner"></div>
-                                </div>
-
-                                <li>
-                                    <h4 class="text-white mb-3">Chọn khu vực bạn muốn khám phá</h4>
-
-                                    <p class="text-white">Khám phá các địa điểm quan trọng trong khuôn viên FPT như thư viện, giảng đường, ký túc xá, sân bóng và nhiều hơn nữa – mọi thứ chỉ với một lần chạm</p>
-
-                                    <div class="icon-holder">
-                                        <i class="bi-search"></i>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <h4 class="text-white mb-3">Quét địa điểm bằng AI</h4>
-
-                                    <p class="text-white">Sử dụng camera điện thoại để nhận diện trực tiếp cảnh vật và nhận thông tin chi tiết tức thì. Công nghệ AI giúp bạn định vị thông minh và thuận tiện</p>
-
-                                    <div class="icon-holder">
-                                        <i class="bi-bookmark"></i>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <h4 class="text-white mb-3">Tìm hiểu và tương tác</h4>
-
-                                    <p class="text-white">Trò chuyện với trợ lý ảo AILENS để hỏi thông tin về lịch học, phòng học, tiện ích,... Mọi thắc mắc sẽ được hỗ trợ nhanh chóng và chính xác</p>
-
-                                    <div class="icon-holder">
-                                        <i class="bi-book"></i>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="col-12 text-center mt-5">
-                        <p class="text-white">
-                            Bạn muốn xem thêm?
-                            <a href="#" class="btn custom-btn custom-border-btn ms-3">Youtube</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <section class="faq-section section-padding" id="section_4">
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-lg-6 col-12">
-                        <h2 class="mb-4">Câu hỏi thường gặp</h2>
-                    </div>
-
-                    <div class="clearfix"></div>
-
-                    <div class="col-lg-5 col-12">
-                        <img src="https://onetour.vn/Media/images/OneTour/tin-tuc/cau-hoi-thuong-gap.jpg" class="img-fluid" alt="FAQs">
-                    </div>
-
-                    <div class="col-lg-6 col-12 m-auto">
-                        <div class="accordion" id="accordionExample">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        AILENS có cần kết nối Internet để sử dụng không?
-                                    </button>
-                                </h2>
-
-                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        Có, AILENS cần kết nối Internet để truy cập dữ liệu và phản hồi người dùng theo thời gian thực
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingTwo">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        AILENS hoạt động trên thiết bị nào?
-                                    </button>
-                                </h2>
-
-                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        AILENS hỗ trợ cả máy tính và điện thoại thông minh có trình duyệt web
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingThree">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        Tôi cần đăng nhập để sử dụng không?
-                                    </button>
-                                </h2>
-
-                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        Không bắt buộc. Một số chức năng hoạt động mà không cần đăng nhập
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-
-        <section class="contact-section section-padding section-bg" id="section_5">
-            <div class="container">
-                <div class="row justify-content-center">
-
-                    <div class="col-lg-8 col-md-10 col-12 text-center">
-                        <h2 class="mb-5">Liên hệ với nhóm AILENS</h2>
-
-                        <p class="mb-3">
-                            <strong>Họ và tên:</strong> Nguyễn Hồng Nam
-                        </p>
-
-                        <p class="mb-3">
-                            <strong>Số điện thoại:</strong>
-                            <a href="tel:0123456789" class="site-footer-link">0123 456 789</a>
-                        </p>
-
-                        <p class="mb-3">
-                            <strong>Email:</strong>
-                            <a href="mailto:nam@example.com" class="site-footer-link">nam@example.com</a>
-                        </p>
-
-                        <p class="mb-0">
-                            <strong>Facebook:</strong>
-                            <a href="https://facebook.com/nguyenhongnam" target="_blank" class="site-footer-link">facebook.com/nguyenhongnam</a>
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-        <section class="ads-section section-padding bg-light" id="section_6">
-            <div class="container">
-                <div class="row justify-content-center text-center">
-                    <div class="col-lg-8 col-md-10 col-12">
-                        <h2 class="mb-4">Dịch vụ Quảng cáo</h2>
-                        <p class="mb-4">
-                            Chúng tôi cung cấp giải pháp Marketing toàn diện cho sinh viên, CLB và doanh nghiệp trong và ngoài FPT:
-                            chạy quảng cáo Facebook/Google, thiết kế sáng tạo, và tư vấn truyền thông hiệu quả.
-                        </p>
-
-                        <div class="d-flex justify-content-center gap-3">
-                            <a href="mailto:ads@ailens.com" class="btn btn-primary">Liên hệ ngay</a>
-                            <a href="#section_5" class="btn btn-outline-dark">Xem thêm</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
     </main>
 
-    <!-- CHATBOT FLOATING WIDGET -->
-    <div id="chatbot-toggle">💬 Chat với AI</div>
-    <div id="chatbot-box">
-        <div id="chatbot-header">
-            <span>🤖 Trợ lý ảo AI</span>
-            <button id="chatbot-close">&times;</button>
-        </div>
-        <div id="chatbot-messages">
-            <p><b>AI:</b> Xin chào 👋! Mình có thể giúp gì cho bạn?</p>
-        </div>
-        <div id="chatbot-input">
-            <input type="text" id="user-input" placeholder="Nhập tin nhắn..." />
-            <button id="send-btn">Gửi</button>
-        </div>
-    </div>
-
+    <!-- FOOTER -->
     <footer class="site-footer section-padding">
         <div class="container">
             <div class="row">
@@ -529,24 +220,13 @@
                 </div>
 
                 <div class="col-lg-3 col-md-4 col-6 mb-4 mb-lg-0">
-                    <h6 class="site-footer-title mb-3">Information</h6>
-                    <p class="text-white d-flex mb-1"><a href="tel:305-240-9671" class="site-footer-link">305-240-9671</a></p>
-                    <p class="text-white d-flex"><a href="mailto:info@company.com" class="site-footer-link">info@company.com</a></p>
+                    <h6 class="site-footer-title mb-3">Thông tin</h6>
+                    <p class="text-white d-flex mb-1"><a href="tel:0123456789" class="site-footer-link">0123 456 789</a></p>
+                    <p class="text-white d-flex"><a href="mailto:info@ailens.com" class="site-footer-link">info@ailens.com</a></p>
                 </div>
             </div>
         </div>
     </footer>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const chatbotToggle = document.getElementById("chatbot-toggle");
-            const chatbotBox = document.getElementById("chatbot-box");
-            const chatbotClose = document.getElementById("chatbot-close");
-            chatbotBox.style.display = "none";
-            chatbotToggle.addEventListener("click", () => chatbotBox.style.display = "block");
-            chatbotClose.addEventListener("click", () => chatbotBox.style.display = "none");
-        });
-    </script>
 
     <!-- JAVASCRIPT FILES -->
     <script src="~/js/jquery.min.js"></script>
@@ -554,6 +234,100 @@
     <script src="~/js/jquery.sticky.js"></script>
     <script src="~/js/click-scroll.js"></script>
     <script src="~/js/custom.js"></script>
+
+    <!-- 🔹 Kommunicate Chatbot -->
+    <script type="text/javascript">
+            (function(d, m){
+                var kommunicateSettings =
+                    {"appId":"2cf5d98275558a410b2d177a87e695b05","popupWidget":true,"automaticChatOpenOnNavigation":true};
+                var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+                s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+                var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+                window.kommunicate = m; m._globals = kommunicateSettings;
+            })(document, window.kommunicate || {});
+        /* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
+    </script>
+
+
+    <!-- 🔹 Chuyển sang trang bản đồ khi tìm kiếm -->
+    <script>
+        function goToMap(e) {
+            e.preventDefault();
+            const keyword = document.getElementById("keyword").value.trim();
+            if (keyword)
+                window.location.href = `/Customer/Map?search=${encodeURIComponent(keyword)}#campusMap`;
+            return false;
+        }
+    </script>
+
+    <script>
+        // Danh sách gợi ý mẫu — bạn có thể load từ DB sau này
+        const locations = [
+            "Dom A",
+            "Dom B",
+            "Dom C",
+            "Căng tin 1",
+            "Căng tin 2",
+            "Hồ Đá",
+            "Hồ Đào Cốc",
+            "Thư viện",
+            "Giảng đường Alpha",
+            "Giảng đường Beta",
+            "Sân bóng FPT",
+            "Ký túc xá Nam",
+            "Ký túc xá Nữ"
+        ];
+
+        function showSuggestions() {
+            const input = document.getElementById("keyword");
+            const list = document.getElementById("suggestion-list");
+            const query = input.value.trim().toLowerCase();
+            list.innerHTML = "";
+
+            if (!query) {
+                list.style.display = "none";
+                return;
+            }
+
+            // Lọc các gợi ý khớp
+            const filtered = locations.filter(loc => loc.toLowerCase().includes(query));
+            if (filtered.length === 0) {
+                list.style.display = "none";
+                return;
+            }
+
+            // Hiển thị danh sách gợi ý
+            filtered.forEach(item => {
+                const li = document.createElement("li");
+                li.classList.add("list-group-item", "list-group-item-action");
+                li.textContent = item;
+                li.addEventListener("click", () => {
+                    input.value = item;
+                    list.style.display = "none";
+                });
+                list.appendChild(li);
+            });
+            list.style.display = "block";
+        }
+
+        // Ẩn gợi ý khi click ra ngoài
+        document.addEventListener("click", function (e) {
+            const list = document.getElementById("suggestion-list");
+            if (!document.getElementById("keyword").contains(e.target)) {
+                list.style.display = "none";
+            }
+        });
+
+        // Hàm điều hướng khi tìm kiếm
+        function goToMap(e) {
+            e.preventDefault();
+            const keyword = document.getElementById("keyword").value.trim();
+            if (keyword)
+                window.location.href = `/Customer/Map?search=${encodeURIComponent(keyword)}#campusMap`;
+            return false;
+        }
+    </script>
+
 
 </body>
 </html>
