@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using SmartEXE.Models;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Linq;
 
 namespace SmartEXE.Pages.Admin
 {
+    [Authorize(Roles = "admin")]
     public class AnalyticsModel : PageModel
     {
         private readonly AilensContext _context;
@@ -22,18 +24,24 @@ namespace SmartEXE.Pages.Admin
 
         public void OnGet()
         {
-            // Lấy toàn bộ bản ghi analytics
-            Analytics = _context.Analytics
-                .Include(a => a.User)
-                .Include(a => a.Location)
-                .OrderByDescending(a => a.Timestamp)
-                .Take(100) // tránh load quá nặng
-                .ToList();
+            try
+            {
+                Analytics = _context.Analytics
+                    .Include(a => a.User)
+                    .Include(a => a.Location)
+                    .OrderByDescending(a => a.Timestamp)
+                    .Take(100)
+                    .ToList();
 
-            // Thống kê
-            TotalViews = _context.Analytics.Count(a => a.Action == "view" || a.Action == "view_location");
-            TotalSearches = _context.Analytics.Count(a => a.Action == "search");
-            TotalNavigations = _context.Analytics.Count(a => a.Action == "navigate");
+                TotalViews = _context.Analytics.Count(a => a.Action == "view" || a.Action == "view_location");
+                TotalSearches = _context.Analytics.Count(a => a.Action == "search");
+                TotalNavigations = _context.Analytics.Count(a => a.Action == "navigate");
+            }
+            catch
+            {
+                Analytics = new();
+                TotalViews = TotalSearches = TotalNavigations = 0;
+            }
         }
     }
 }

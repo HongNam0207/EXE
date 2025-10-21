@@ -1,11 +1,14 @@
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SmartEXE.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace SmartEXE.Pages.Admin
 {
+    [Authorize(Roles = "admin")]
     public class PartnerAdminModel : PageModel
     {
         private readonly AilensContext _context;
@@ -14,6 +17,8 @@ namespace SmartEXE.Pages.Admin
 
         [BindProperty]
         public Partner PartnerInput { get; set; } = new();
+
+        public string? Message { get; set; }
 
         public PartnerAdminModel(AilensContext context)
         {
@@ -27,46 +32,83 @@ namespace SmartEXE.Pages.Admin
 
         public IActionResult OnPostCreate()
         {
-            if (!ModelState.IsValid) return Page();
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    Message = "❌ Invalid partner data.";
+                    LoadData();
+                    return Page();
+                }
 
-            PartnerInput.Id = Guid.NewGuid();
-            PartnerInput.CreatedAt = DateTime.Now;
+                PartnerInput.Id = Guid.NewGuid();
+                PartnerInput.CreatedAt = DateTime.Now;
+                _context.Partners.Add(PartnerInput);
+                _context.SaveChanges();
 
-            _context.Partners.Add(PartnerInput);
-            _context.SaveChanges();
-            return RedirectToPage();
+                TempData["Message"] = "✅ Partner created successfully!";
+                return RedirectToPage();
+            }
+            catch (Exception ex)
+            {
+                Message = $"❌ Error creating partner: {ex.Message}";
+                LoadData();
+                return Page();
+            }
         }
 
         public IActionResult OnPostEdit(Guid id)
         {
-            var existing = _context.Partners.Find(id);
-            if (existing != null)
+            try
             {
-                existing.Name = PartnerInput.Name;
-                existing.Type = PartnerInput.Type;
-                existing.ContactEmail = PartnerInput.ContactEmail;
-                existing.Phone = PartnerInput.Phone;
-                existing.Website = PartnerInput.Website;
-                existing.Description = PartnerInput.Description;
-                _context.SaveChanges();
+                var existing = _context.Partners.Find(id);
+                if (existing != null)
+                {
+                    existing.Name = PartnerInput.Name;
+                    existing.Type = PartnerInput.Type;
+                    existing.ContactEmail = PartnerInput.ContactEmail;
+                    existing.Phone = PartnerInput.Phone;
+                    existing.Website = PartnerInput.Website;
+                    existing.Description = PartnerInput.Description;
+                    //existing.UpdatedAt = DateTime.Now;
+
+                    _context.SaveChanges();
+                    TempData["Message"] = "✏️ Partner updated successfully!";
+                }
             }
+            catch (Exception ex)
+            {
+                TempData["Message"] = $"❌ Error editing partner: {ex.Message}";
+            }
+
             return RedirectToPage();
         }
 
         public IActionResult OnPostDelete(Guid id)
         {
-            var del = _context.Partners.Find(id);
-            if (del != null)
+            try
             {
-                _context.Partners.Remove(del);
-                _context.SaveChanges();
+                var del = _context.Partners.Find(id);
+                if (del != null)
+                {
+                    _context.Partners.Remove(del);
+                    _context.SaveChanges();
+                    TempData["Message"] = "🗑️ Partner deleted successfully.";
+                }
             }
+            catch (Exception ex)
+            {
+                TempData["Message"] = $"❌ Error deleting partner: {ex.Message}";
+            }
+
             return RedirectToPage();
         }
 
         private void LoadData()
         {
-            Partners = _context.Partners.OrderByDescending(x => x.CreatedAt).ToList();
+            Partners = _context.Partners
+                .OrderByDescending(x => x.CreatedAt)
+                .ToList();
         }
     }
 }

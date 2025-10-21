@@ -212,3 +212,6 @@ VALUES
 (N'Thế Giới Số', 'supplier', 'sales@thegioiso.vn', '0912345678', 'https://thegioiso.vn', N'Cung cấp thiết bị camera AR'),
 (N'Căng Tin Beta', 'service', 'beta@fpt.edu.vn', '0909988776', NULL, N'Đối tác dịch vụ ăn uống tại khu Beta'),
 (N'FlexSim VN', 'business_partner', 'contact@flexsim.vn', '0839876543', 'https://flexsim.vn', N'Đối tác mô phỏng hệ thống logistics');
+
+
+

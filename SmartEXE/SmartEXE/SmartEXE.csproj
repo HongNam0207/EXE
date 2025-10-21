@@ -32,14 +32,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\models\" />
-    <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\models\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Keys\ailens-key.json" />
   </ItemGroup>
 
 </Project>

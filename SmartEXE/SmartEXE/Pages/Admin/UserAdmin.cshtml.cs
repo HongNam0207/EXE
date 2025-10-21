@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using SmartEXE.Models;
-using System.Linq;
 
 namespace SmartEXE.Pages.Admin
 {
+    [Authorize(Roles = "admin")] // ✅ Chỉ admin được vào
     public class UserAdminModel : PageModel
     {
         private readonly AilensContext _context;
@@ -21,30 +22,16 @@ namespace SmartEXE.Pages.Admin
 
         public void OnGet()
         {
-            try
+            if (!_context.Database.CanConnect())
             {
-                // Kiểm tra có kết nối DB không
-                if (_context.Database.CanConnect())
-                {
-                    // ✅ Lấy trực tiếp dữ liệu từ các bảng
-                    TotalPartners = _context.Partners.Count();
-                    TotalUsers = _context.Users.Count();
-                    TotalContent = _context.Locations.Count() + _context.Topics.Count();
-                    TotalInteractions = _context.Analytics.Count();
-                }
-                else
-                {
-                    // Nếu không kết nối được
-                    TotalPartners = TotalUsers = TotalContent = TotalInteractions = 0;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error loading dashboard: " + ex.Message);
                 TotalPartners = TotalUsers = TotalContent = TotalInteractions = 0;
+                return;
             }
+
+            TotalPartners = _context.Partners.Count();
+            TotalUsers = _context.Users.Count();
+            TotalContent = _context.Locations.Count() + _context.Topics.Count();
+            TotalInteractions = _context.Analytics.Count();
         }
-
-
     }
 }
